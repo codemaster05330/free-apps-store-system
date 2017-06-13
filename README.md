@@ -6,7 +6,7 @@ demo
 
 [demo](https://) 
 
-demo credentials :
+* demo credentials 
 	* admin :   admin@domain.com , admin
 	* develper: dev1@domain.com , develper1
 	* develper: dev2@domain.com , develper2
@@ -15,29 +15,29 @@ demo credentials :
 system details
 ==============
 
-it has three kinds of users 
+* it has three kinds of users 
 	* guset[unregistered] 
 	* normal user[registered user]	
 	* develper[registered develper]	
 	* admin[admin privilege user]
 
-guset privileges:
+* guset privileges
 	* download apps
 	* report broken links
 
-normal user privileges:
+* normal user privileges
 	* guset privileges
 	* review apps
 	* manage thier accounts
 
-develper privileges:
+* develper privileges
 	* guset privileges
 	* add new app 
 	* update their apps
 	* delete their apps
 	* manage their accounts
 	
-admin privileges:
+* admin privileges
 	* manage users [add,edit,delete]
 	* review [apps(new/updates) ,develpers accounts(new/updates),apps users reviews]
 	* manage system divisions (categories,platforms)[add ,edit ,delete]
