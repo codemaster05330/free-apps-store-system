@@ -7,41 +7,41 @@ demo
 [demo](https://) 
 
 demo credentials :
-	admin :   admin@domain.com , admin
-	develper: dev1@domain.com , develper1
-	develper: dev2@domain.com , develper2
-	normal user: user@domain.com , user
+	* admin :   admin@domain.com , admin
+	* develper: dev1@domain.com , develper1
+	* develper: dev2@domain.com , develper2
+	* normal user: user@domain.com , user
 	
 system details
 ==============
 
 it has three kinds of users 
-	o guset[unregistered] 
-	o normal user[registered user]	
-	o develper[registered develper]	
-	o admin[admin privilege user]
+	* guset[unregistered] 
+	* normal user[registered user]	
+	* develper[registered develper]	
+	* admin[admin privilege user]
 
 guset privileges:
-	o download apps
-	o report broken links
+	* download apps
+	* report broken links
 
 normal user privileges:
-	o guset privileges
-	o review apps
-	o manage thier accounts
+	* guset privileges
+	* review apps
+	* manage thier accounts
 
 develper privileges:
-	o guset privileges
-	o add new app 
-	o update their apps
-	o delete their apps
-	o manage their accounts
+	* guset privileges
+	* add new app 
+	* update their apps
+	* delete their apps
+	* manage their accounts
 	
 admin privileges:
-	o manage users [add,edit,delete]
-	o review [apps(new/updates) ,develpers accounts(new/updates),apps users reviews]
-	o manage system divisions (categories,platforms)[add ,edit ,delete]
-	o misc
+	* manage users [add,edit,delete]
+	* review [apps(new/updates) ,develpers accounts(new/updates),apps users reviews]
+	* manage system divisions (categories,platforms)[add ,edit ,delete]
+	* misc
 
 
 how to use it 
