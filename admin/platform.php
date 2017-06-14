@@ -54,6 +54,30 @@ elseif($_GET['action']=='edit')
             
         }
     }
+elseif($_GET['action']=='update')
+{
+    if(!(isset($_GET['id'])&&isset($_POST['submit'])))//redirect if id  or no submit isn't defined
+    {
+            header("location:./platform.php");
+            exit();
+    }
+    else
+    {
+          $name=$_POST['name'];
+          $icon=$_FILES['icon']['tmp_name'];
+          $icon=addslashes($icon);
+          $icon=file_get_contents($icon);
+          $icon=base64_encode($icon);
+          $id=$_GET['id']; 
+          
+          $sql="UPDATE platforms SET platformName='$name',platformIcon='$icon' WHERE platformID=$id ";  
+          mysql_query($sql) or die("query failed due to ".mysql_error());
+          header("location:./platform.php");
+          exit();
+    }
+    
+}
+
     
 }
 else
