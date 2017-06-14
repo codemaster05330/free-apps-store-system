@@ -15,6 +15,15 @@ include_once('../includes/dbconfig.php');
 <?php
 if(isset($_GET['action']))
 {
+    if($_GET['action']=='new')
+    {
+       echo '<form action="./platform.php?action=add" method="post" enctype="multipart/form-data">
+<label>Platform Name :</label><input type="text" name="name" /><br />
+<label>Platform Icon :</label><input type="file" value="upload" name="icon" /><br />
+<input  type="submit" name="submit" value="submit" />
+</form>';
+    }
+
     
 }
 else
