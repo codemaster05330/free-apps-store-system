@@ -89,6 +89,22 @@ elseif($_GET['action']=='del')
      header("location:./platform.php");
           exit();
 }
+elseif($_GET['action']=='add')
+{
+    if(isset($_POST['submit']))
+    {
+        $name=$_POST['name'];
+        $icon=$_FILES['icon']['tmp_name'];
+        $icon=addslashes($icon);
+        $icon=file_get_contents($icon);
+        $icon=base64_encode($icon);
+        $sql="INSERT INTO platforms (platformName,platformIcon)VALUES('$name','$icon')";  
+        mysql_query($sql) or die("query failed due to ".mysql_error());
+    }
+  header("location:./platform.php");
+  exit();
+    
+}
     
 }
 else
