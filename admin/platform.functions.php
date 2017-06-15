@@ -1,7 +1,7 @@
 <?php
 
 /**
- * platform managment functions[add,update,new,del]
+ * platform managment functions[add,update,new,del,edit]
  * 
  * @author mohamed hussein 
  * @copyright 2017
@@ -62,4 +62,13 @@ function newPlatformForm()
           mysql_query($sql) or die("query failed due to ".mysql_error());
  } 
  
+ /**
+  * delete platfom from platforms table
+  * @param int $id platform id
+  */
+  function delPlatform($id)
+  {
+    $sql="DELETE FROM platforms WHERE platformID=$id ";
+    mysql_query($sql) or die("query failed due to ".mysql_error());
+  }
 ?>
