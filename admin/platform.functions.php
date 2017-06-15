@@ -89,9 +89,10 @@ function newPlatformForm()
    }
    
    /**
-    * display all platforms 
+    * display all platforms
+    * @param result $result query result
     */
-   function displayPlatforms()
+   function displayPlatforms($result)
     {
         echo '<table><tr><th>Platform</th><th>actions</th></tr>';
         while($row=mysql_fetch_assoc($result))
