@@ -71,4 +71,18 @@ function newPlatformForm()
     $sql="DELETE FROM platforms WHERE platformID=$id ";
     mysql_query($sql) or die("query failed due to ".mysql_error());
   }
+  
+  /**
+   * add new platform to platforms table
+   * @param string $name platform name
+   * @param file $icon platform icon
+   */
+  function addPlatform($name,$icon)
+  {
+    $icon=addslashes($icon);
+    $icon=file_get_contents($icon);
+    $icon=base64_encode($icon);
+    $sql="INSERT INTO platforms (platformName,platformIcon)VALUES('$name','$icon')";  
+    mysql_query($sql) or die("query failed due to ".mysql_error());
+   }
 ?>
