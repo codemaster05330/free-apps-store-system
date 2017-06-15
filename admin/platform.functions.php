@@ -7,6 +7,8 @@
  * @copyright 2017
  */
 
+include_once('../includes/dbconfig.php');
+
 /**
  * create html form for new platform
  */
