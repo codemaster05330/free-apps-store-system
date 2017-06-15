@@ -1,7 +1,7 @@
 <?php
 
 /**
- * platform managment functions[add,update,new,del,edit]
+ * platform managment functions[add,update,new,del,edit,display]
  * 
  * @author mohamed hussein 
  * @copyright 2017
@@ -85,4 +85,19 @@ function newPlatformForm()
     $sql="INSERT INTO platforms (platformName,platformIcon)VALUES('$name','$icon')";  
     mysql_query($sql) or die("query failed due to ".mysql_error());
    }
+   
+   /**
+    * display all platforms 
+    */
+   function displayPlatforms()
+    {
+        echo '<table><tr><th>Platform</th><th>actions</th></tr>';
+        while($row=mysql_fetch_assoc($result))
+        {
+            echo '<tr><td><img id="smallIcon" src="data:image;base64,'.$row['platformIcon'].'">'.$row['platformName'].'</td>';
+            echo '<td><a href="./platform.php?action=edit&id='.$row['platformID'].'" class="hrefBtn">edit</a>';
+            echo '<a href="./platform.php?action=del&id='.$row['platformID'].'" class="hrefBtn">delete</a></td></tr>';
+        }
+        echo '</table>';
+    } 
 ?>
