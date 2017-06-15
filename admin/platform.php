@@ -82,14 +82,7 @@ else
     else
     {
         echo'<p><a href="./platform.php?action=new" class="hrefBtn">add new platform</a></p>';
-        echo '<table><tr><th>Platform</th><th>actions</th></tr>';
-        while($row=mysql_fetch_assoc($result))
-        {
-            echo '<tr><td><img id="smallIcon" src="data:image;base64,'.$row['platformIcon'].'">'.$row['platformName'].'</td>';
-            echo '<td><a href="./platform.php?action=edit&id='.$row['platformID'].'" class="hrefBtn">edit</a>';
-            echo '<a href="./platform.php?action=del&id='.$row['platformID'].'" class="hrefBtn">delete</a></td></tr>';
-        }
-        echo '</table>';
+        displayPlatforms($result);
     }
     
 } 
