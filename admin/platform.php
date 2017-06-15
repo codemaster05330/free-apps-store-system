@@ -51,12 +51,11 @@ elseif($_GET['action']=='del')
     if(isset($_GET['id']))//redirect if id isn't defined
     {
         $id=$_GET['id'];
-        $sql="DELETE FROM platforms WHERE platformID=$id ";
-        mysql_query($sql) or die("query failed due to ".mysql_error());
+        delPlatform($id);
          
     }
      header("location:./platform.php");
-          exit();
+     exit();
 }
 elseif($_GET['action']=='add')
 {
