@@ -46,4 +46,20 @@ function newPlatformForm()
             }
  }
 
+/**
+ * update an existing platform record
+ * @param int $id platform id
+ * @param string $name platform name
+ * @param file $icon platform icon
+ */
+ function updatePlatform($id,$name,$icon)
+ {
+   
+          $icon=addslashes($icon);
+          $icon=file_get_contents($icon);
+          $icon=base64_encode($icon);
+          $sql="UPDATE platforms SET platformName='$name',platformIcon='$icon' WHERE platformID=$id ";  
+          mysql_query($sql) or die("query failed due to ".mysql_error());
+ } 
+ 
 ?>
