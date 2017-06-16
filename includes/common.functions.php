@@ -51,8 +51,8 @@ $_SESSION['successBuffer']=array();
   */
   function printSuccess()
   {
-    global $successBuffer;
-    $count=count($successBuffer);
+    
+    $count=count($_SESSION['successBuffer']);
     
     if($count>0)
     {
@@ -60,7 +60,7 @@ $_SESSION['successBuffer']=array();
         echo '<ul id="successList">';
     for($i=0;$i<$count;$i++)
     {
-        $suc=array_shift($successBuffer);
+        $suc=array_shift($_SESSION['successBuffer']);
         echo "<li>$suc</li>";
     } 
     echo '</ul>'; 
@@ -73,10 +73,10 @@ $_SESSION['successBuffer']=array();
    */
    function logSuccess($suc)
    {
-    global $successBuffer;
+    //global $successBuffer;
     if($suc != "")
     {
-       $successBuffer[]=$suc; 
+       $_SESSION['successBuffer'][]=$suc; 
     }
    }
    
