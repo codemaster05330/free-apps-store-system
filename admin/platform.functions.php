@@ -63,6 +63,7 @@ function newPlatformForm()
           $icon=base64_encode($icon);
           $sql="UPDATE platforms SET platformName='$name',platformIcon='$icon' WHERE platformID=$id ";  
           mysql_query($sql) or die("query failed due to ".mysql_error());
+          logSuccess("platform updated successfully");
  } 
  
  /**
