@@ -89,6 +89,7 @@ function newPlatformForm()
     $icon=base64_encode($icon);
     $sql="INSERT INTO platforms (platformName,platformIcon)VALUES('$name','$icon')";  
     mysql_query($sql) or die("query failed due to ".mysql_error());
+    logSuccess("platform added successfully");
    }
    
    /**
