@@ -67,8 +67,17 @@ $successBuffer=array();
     }
   }
   
-  $successBuffer[]="suc1";
-  $successBuffer[]="suc2";
-  $successBuffer[]="suc3";
-  printSuccess();
+  /**
+   * add success msg to global success buffer
+   * @param string $suc success msg to be added
+   */
+   function logSuccess($suc)
+   {
+    global $successBuffer;
+    if($suc != "")
+    {
+       $successBuffer[]=$suc; 
+    }
+   }
+   
 ?>
