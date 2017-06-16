@@ -74,6 +74,7 @@ function newPlatformForm()
   {
     $sql="DELETE FROM platforms WHERE platformID=$id ";
     mysql_query($sql) or die("query failed due to ".mysql_error());
+    logSuccess("platform deleted successfully");
   }
   
   /**
