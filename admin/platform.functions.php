@@ -8,7 +8,7 @@
  */
 
 include_once('../includes/dbconfig.php');
-
+include_once('../includes/common.functions.php');
 /**
  * create html form for new platform
  */
@@ -31,6 +31,7 @@ function newPlatformForm()
             $result=mysql_query($sql) or die("query failed due to ".mysql_error());
             if(mysql_num_rows($result)==0)//redirect if unknown id 
             {
+                logError("unkown platform id");
               header("location:./platform.php");
             exit();  
             }
