@@ -36,4 +36,18 @@ $successBuffer=array();
     
  }
  
+ /**
+  * add error msg in global error buffer
+  * @param string $err error msg tobe added
+  */
+  function logError($err)
+  {
+    global $errorBuffer;
+    $errorBuffer[]=$err;
+  }
+ 
+ logError("error1");
+ logError("error2");
+ logError("error3");
+ printError();
 ?>
