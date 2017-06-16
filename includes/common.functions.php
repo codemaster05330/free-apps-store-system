@@ -10,9 +10,9 @@
 include_once('dbconfig.php');
 
 //define global error buffer
-$_SESSION['errorBuffer']=array();
+//$_SESSION['errorBuffer']=array();
 //define global success buffer
-$_SESSION['successBuffer']=array();
+//$_SESSION['successBuffer']=array();
 
 /**
  * echo error bufffer content and empty it 
