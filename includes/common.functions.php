@@ -46,8 +46,29 @@ $successBuffer=array();
     $errorBuffer[]=$err;
   }
  
- logError("error1");
- logError("error2");
- logError("error3");
- printError();
+ /**
+  * echo succcess buffer and empty it 
+  */
+  function printSuccess()
+  {
+    global $successBuffer;
+    $count=count($successBuffer);
+    
+    if($count>0)
+    {
+        //print success as unordered list
+        echo '<ul id="successList">';
+    for($i=0;$i<$count;$i++)
+    {
+        $suc=array_shift($successBuffer);
+        echo "<li>$suc</li>";
+    } 
+    echo '</ul>'; 
+    }
+  }
+  
+  $successBuffer[]="suc1";
+  $successBuffer[]="suc2";
+  $successBuffer[]="suc3";
+  printSuccess();
 ?>
