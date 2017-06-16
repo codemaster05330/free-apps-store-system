@@ -13,6 +13,8 @@ include_once('platform.functions.php');
 <div id="navigationBar"></div>
 <div id="content">
 <?php
+printError();
+printSuccess();
 if(isset($_GET['action']))
 {
     if($_GET['action']=='new')

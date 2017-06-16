@@ -10,17 +10,17 @@
 include_once('dbconfig.php');
 
 //define global error buffer
-$errorBuffer=array();
+$_SESSION['errorBuffer']=array();
 //define global success buffer
-$successBuffer=array();
+$_SESSION['successBuffer']=array();
 
 /**
  * echo error bufffer content and empty it 
  */
  function printError()
  {
-    global $errorBuffer;
-    $count=count($errorBuffer);
+    $errorBuffer=
+    $count=count($_SESSION['errorBuffer']);
     
     if($count>0)
     {
@@ -28,7 +28,7 @@ $successBuffer=array();
         echo '<ul id="errorList">';
     for($i=0;$i<$count;$i++)
     {
-        $er=array_shift($errorBuffer);
+        $er=array_shift($_SESSION['errorBuffer']);
         echo "<li>$er</li>";
     } 
     echo '</ul>'; 
@@ -43,7 +43,7 @@ $successBuffer=array();
   function logError($err)
   {
     global $errorBuffer;
-    $errorBuffer[]=$err;
+    $_SESSION['errorBuffer'][]=$err;
   }
  
  /**
