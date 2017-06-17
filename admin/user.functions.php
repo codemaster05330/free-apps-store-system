@@ -21,4 +21,46 @@ include_once('../includes/common.functions.php');
     logSuccess("user deleted successfully");
  }
  
+ /**
+  * change user privilege form
+  * @param int $id user id
+  */
+  function privilegeForm($id)
+  {
+    $sql="SELECT * FROM users WHERE userID=$id";
+    $result=mysql_query($sql) or die("query failed due to ".mysql_error());
+    if(mysql_num_rows($result)==0)//redirect if unknown id 
+    {
+        logError("unkown user id");
+        header("location:./user.php");
+        exit();  
+    }
+     else
+    {//load user content to be edited
+    $row=mysql_fetch_assoc($result);
+    $level=$row['userLevel'];
+    if($level==0)
+    {
+        $level="Admin";
+    }
+    elseif($level==1)
+    {
+        $level="Developer";
+    }
+    else
+    {
+        $level="Normal User";
+    }
+    echo '<form action="user.php?action=updateLevel&id='.$id.'" method="post">
+<label>Current Privilege : <strong>'.$level.'</strong></label> <br />
+<label>New Privilege :</label><select name="level">
+<option value="0">Admin</option>
+<option value="1">Developer</option>
+<option value="2">Normal User</option>
+</select><br />
+<input type="submit" name="submit" value="submit" />
+</form>';
+    }
+  }
+  
 ?>
