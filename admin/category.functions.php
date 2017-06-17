@@ -89,5 +89,16 @@ echo '</select></label><br />
           logSuccess("category updated successfully");
  } 
  
+  /**
+  * delete category from categories table
+  * @param int $id category id
+  */
+  function delCategory($id)
+  {
+    $sql="DELETE FROM categories WHERE catID=$id ";
+    mysql_query($sql) or die("query failed due to ".mysql_error());
+    logSuccess("category deleted successfully");
+  }
+  
 ?>
 
