@@ -14,7 +14,7 @@ include_once('../includes/common.functions.php');
  function newCatForm()
  {
     echo '<form action="category.php?action=add" method="post">
-<label>Main Category <select name="mainCat"><option value="-1">noune</option>';
+<label>Main Category <select name="mainCat"><option value="-1">none</option>';
 $sql='SELECT * FROM categories WHERE catParent IS NULL ';
 $result=mysql_query($sql) or die("query failed due to ".mysql_error());
 while( $row=mysql_fetch_assoc($result))
@@ -49,7 +49,7 @@ echo '</select></label><br />
              $parent= $row['catParent'];
              $id=$row['catID'];
              echo '<form action="category.php?action=update&id='.$id.'" method="post">
-                <label>Main Category <select name="mainCat"><option value="-1">noune</option>';
+                <label>Main Category <select name="mainCat"><option value="-1">none</option>';
                 
                 $sql='SELECT * FROM categories WHERE catParent IS NULL ';
                 $result=mysql_query($sql) or die("query failed due to ".mysql_error());
@@ -75,5 +75,19 @@ echo '</select></label><br />
             }
  }
     
+/**
+ * update an existing category record
+ * @param int $id category id
+ * @param string $name category name
+ * @param int $parent category parent
+ */
+ function updatePlatform($id,$name,$parent)
+ {
+   
+          $sql="UPDATE categories SET catName='$name',catParent=$parent WHERE catID=$id ";  
+          mysql_query($sql) or die("query failed due to ".mysql_error());
+          logSuccess("category updated successfully");
+ } 
+ 
 ?>
 
