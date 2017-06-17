@@ -51,6 +51,16 @@ if(isset($_GET['action']))
         header("location:./user.php");
         exit();  
         break;
+        case "del":
+        if(isset($_GET['id']))//redirect if id isn't defined
+        {
+        $id=$_GET['id'];
+        delUser($id);
+         
+        }
+     header("location:./user.php");
+     exit();
+        break;
     }
 }
 else
