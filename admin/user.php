@@ -25,6 +25,22 @@ printError();
 printSuccess();
 if(isset($_GET['action']))
 {
+    switch ($_GET['action'])
+    {
+        case "privilge":
+         if(!isset($_GET['id']))//redirect if id isn't defined
+        {
+            header("location:./user.php");
+            exit();
+        }
+        else
+        {//get category record from db
+        
+            privilegeForm($_GET['id']);
+            
+        }
+        break;
+    }
 }
 else
 {
