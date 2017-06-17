@@ -23,7 +23,16 @@ include_once('./layout/menu.php');
 <?php
 printError();
 printSuccess();
-
+if(isset($_GET['action']))
+{
+}
+else
+{
+    $sql="SELECT * FROM users";
+   $result=mysql_query($sql) or die("query failed due to ".mysql_error());
+   displayUsers($result);
+}
+    
 ?>
 </div>
 <div id="footer">
