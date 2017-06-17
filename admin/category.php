@@ -53,6 +53,17 @@ if(isset($_GET['action']))
         header("location:./category.php");
         exit();  
         break;
+        
+        case "del":
+        if(isset($_GET['id']))//redirect if id isn't defined
+        {
+        $id=$_GET['id'];
+        delCategory($id);
+         
+        }
+     header("location:./category.php");
+     exit();
+        break;
     }
 }
 else
