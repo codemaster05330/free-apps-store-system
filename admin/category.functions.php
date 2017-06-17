@@ -111,7 +111,30 @@ echo '</select></label><br />
     mysql_query($sql) or die("query failed due to ".mysql_error());
     logSuccess("category added successfully");
   }
-  
-  addcategory("games",'NULL');
+ /**
+    * display all categories
+    * @param result $result query result
+    */
+   function displayCategories($result)
+    {
+        echo '<table><tr><th>Category</th><th>Parent Category</th><th>actions</th></tr>';
+        while($row=mysql_fetch_assoc($result))
+        {
+            echo '<tr><td>'.$row['catName'].'</td>';
+            $name='None';
+            if($row['catParent']!= NULL)
+            {
+                $sql="SELECT * FROM categories WHERE catID={$row['catParent']}";
+            $result2=mysql_query($sql) or die("query failed due to ".mysql_error());
+             $row2=mysql_fetch_assoc($result2);
+             $name=$row2['catName'];
+            }
+            echo '<td>'.$name.'</td>';
+            echo '<td><a href="./category.php?action=edit&id='.$row['catID'].'" class="hrefBtn">edit</a>';
+            echo '<a href="./category.php?action=del&id='.$row['catID'].'" class="hrefBtn">delete</a></td></tr>';
+        }
+        echo '</table>';
+    }
+    
 ?>
 
