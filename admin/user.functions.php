@@ -74,5 +74,44 @@ include_once('../includes/common.functions.php');
     mysql_query($sql) or die("query failed due to ".mysql_error());
     logSuccess("user privilege updated successfully");
    }
+   
+   /**
+    * list all user , all management actions
+    * @param result $result query result
+    */
+    function  displayUsers($result)
+    {
+        
+        echo '<table><tr><th>N</th><th>Name</th><th>Email</th> <th>Privilege</th> <th>Join Date</th><th>Last Login</th><th>actions</th></tr>';
+       $count=1;
+        while($row=mysql_fetch_assoc($result))
+        {
+            echo '<tr><td>'.$count.'</td>';
+            $count++;
+            echo '<td>'.$row['userFirstName'].' '.$row['userLastName'].'</td>';
+            echo '<td>'.$row['userEmail'].'</td>';
+            
+            $level=$row['userLevel'];
+            if($level==0)
+            {
+                $level="Admin";
+            }
+            elseif($level==1)
+            {
+                $level="Developer";
+            }
+            else
+            {
+                $level="Normal User";
+            }
+            echo '<td>'.$level.'</td>';
+            echo '<td>'.date('d-m-Y',strtotime($row['joinDate'])).'</td>';
+            echo '<td>'.date('d-m-Y',strtotime($row['lastLogin'])).'</td>';
+            echo '<td><a href="./user.php?action=privilge&id='.$row['userID'].'" class="hrefBtn">Change Privilege</a>';
+            echo '<a href="./user.php?action=del&id='.$row['userID'].'" class="hrefBtn">delete</a></td></tr>';
+        }
+        echo '</table>';
+    
+    }
   
 ?>
