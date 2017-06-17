@@ -32,7 +32,7 @@ echo '</select></label><br />
  * create html form for edit an existing category and assign category values to it 
  * @param int $id category id in categories table
  */
- function editPlatformForm($id)
+ function editCategoryForm($id)
  {
     $sql="SELECT * FROM categories WHERE catID=$id";
             $result=mysql_query($sql) or die("query failed due to ".mysql_error());
