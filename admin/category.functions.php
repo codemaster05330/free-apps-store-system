@@ -81,7 +81,7 @@ echo '</select></label><br />
  * @param string $name category name
  * @param int $parent category parent
  */
- function updatePlatform($id,$name,$parent)
+ function updateCategory($id,$name,$parent)
  {
    
           $sql="UPDATE categories SET catName='$name',catParent=$parent WHERE catID=$id ";  
