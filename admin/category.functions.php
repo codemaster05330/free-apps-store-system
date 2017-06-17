@@ -100,5 +100,18 @@ echo '</select></label><br />
     logSuccess("category deleted successfully");
   }
   
+  /**
+   * add new category to categories table
+   * @param string $name category name
+   * @param int $icon category icon
+   */
+  function addcategory($name,$parent)
+  {
+    $sql="INSERT INTO categories (catName,catParent)VALUES('$name',$parent)";  
+    mysql_query($sql) or die("query failed due to ".mysql_error());
+    logSuccess("category added successfully");
+  }
+  
+  addcategory("games",'NULL');
 ?>
 
