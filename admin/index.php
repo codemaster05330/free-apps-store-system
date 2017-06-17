@@ -6,20 +6,28 @@ include_once('platform.functions.php');
 <head>
     <title>Admin Dashboard</title>
 </head>
+
+<body>
+<div id="wrapper">
+<div id="upperPanel">
+<?php
+include_once('./layout/upperPanel.php');
+?>
+</div>
+<div id="navigationBar">
 <?php
 include_once('./layout/menu.php');
 ?>
-<body>
-<div id="wrapper">
-<div id="upperPanel"></div>
-<div id="navigationBar">
-
 </div>
 <div id="content">
 <?php
 ?>
 </div>
-<div id="footer"></div>
+<div id="footer">
+<?php
+include_once('./layout/footer.php');
+?>
+</div>
 </div>
 </body>
 </html>
