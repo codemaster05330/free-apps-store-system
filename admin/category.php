@@ -22,6 +22,19 @@ if(isset($_GET['action']))
         case "new":
         newCatForm();
         break;
+        case "edit":
+        if(!isset($_GET['id']))//redirect if id isn't defined
+        {
+            header("location:./category.php");
+            exit();
+        }
+        else
+        {//get category record from db
+        
+            editCategoryForm($_GET['id']);
+            
+        }
+        break;
     }
 }
 else
