@@ -63,4 +63,16 @@ include_once('../includes/common.functions.php');
     }
   }
   
+  /**
+   * update user privilege 
+   * @param int $id user id
+   * @param int $level new privilege
+   */
+   function updatePrivilege($id,$level)
+   {
+    $sql="UPDATE users SET userLevel=$level WHERE userID=$id ";  
+    mysql_query($sql) or die("query failed due to ".mysql_error());
+    logSuccess("user privilege updated successfully");
+   }
+  
 ?>
