@@ -64,6 +64,21 @@ if(isset($_GET['action']))
      header("location:./category.php");
      exit();
         break;
+        case "add":
+         if(isset($_POST['submit']))
+    {
+        $name=$_POST['name'];
+        $parent=$_POST['mainCat'];
+        if($parent=="-1")
+        {
+            $parent='NULL';
+        }
+       
+        addcategory($name,$parent);
+        }
+    header("location:./category.php");
+    exit();
+        break;
     }
 }
 else
