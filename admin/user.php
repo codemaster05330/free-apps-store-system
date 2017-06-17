@@ -40,6 +40,17 @@ if(isset($_GET['action']))
             
         }
         break;
+        case "updateLevel":
+        if(isset($_GET['id'])&&isset($_POST['submit']))//redirect if id  or no submit isn't defined
+        {
+        $level=$_POST['level'];
+        $id=$_GET['id']; 
+        updatePrivilege($id,$level);
+        }
+    
+        header("location:./user.php");
+        exit();  
+        break;
     }
 }
 else
