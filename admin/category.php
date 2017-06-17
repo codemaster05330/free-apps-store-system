@@ -35,6 +35,24 @@ if(isset($_GET['action']))
             
         }
         break;
+        
+        case "update":
+        if(isset($_GET['id'])&&isset($_POST['submit']))//redirect if id  or no submit isn't defined
+        {
+        $name=$_POST['name'];
+        $parent=$_POST['mainCat'];
+        if($parent=="-1")
+        {
+            $parent='NULL';
+        }
+        $id=$_GET['id']; 
+
+        updateCategory($id,$name,$parent);
+        }
+    
+        header("location:./category.php");
+        exit();  
+        break;
     }
 }
 else
