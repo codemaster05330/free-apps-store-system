@@ -17,6 +17,12 @@ printError();
 printSuccess();
 if(isset($_GET['action']))
 {
+    switch ($_GET['action'])
+    {
+        case "new":
+        newCatForm();
+        break;
+    }
 }
 else
 {
