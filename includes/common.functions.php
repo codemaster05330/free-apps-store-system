@@ -53,7 +53,8 @@ include_once('dbconfig.php');
   */
   function printSuccess()
   {
-    
+     if(isset($_SESSION['successBuffer']))
+    {
     $count=count($_SESSION['successBuffer']);
     
     if($count>0)
@@ -66,6 +67,7 @@ include_once('dbconfig.php');
         echo "<li>$suc</li>";
     } 
     echo '</ul>'; 
+    }
     }
   }
   
