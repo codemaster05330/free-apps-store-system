@@ -53,6 +53,20 @@ if(isset($_GET['action']))
          header("location:./apps.php");
             exit();
         break;
+        case "pending":
+        $sql='select apps.appID ,apps.appName ,apps.appShortDesc ,apps.appMainCatID,apps.appSubCatID,apps.approvedBy,
+        developers.developerName ,categories.catName from apps,developers,categories where 
+        apps.developerID=developers.developerID and apps.appMainCatID=categories.catID AND apps.approvedBy IS NULL' ;
+        $result=mysql_query($sql) or die("query failed due to ".mysql_error());
+        if(mysql_num_rows($result)==0)
+        {
+            echo "no apps pending requests";
+        }
+        else
+        {
+           displayApps($result);    
+        }        
+        break;
     }
 }
 else
