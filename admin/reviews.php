@@ -23,7 +23,25 @@ include_once('./layout/menu.php');
 <?php
 printError();
 printSuccess();
-
+if(isset($_GET['action']))
+{
+}
+else
+{
+   $sql='select reviews.reviewID,reviews.reveiwContent,reviews.approvedBy,reviews.reviewDate,users.userFirstName,users.userLastName,apps.appName
+  from reviews,users,apps where reviews.authorID = users.userID and reviews.reviewAppID=apps.appID';
+    $result=mysql_query($sql) or die("query failed due to ".mysql_error());
+    if(mysql_num_rows($result)==0)
+    {
+        echo "no review till now";
+    }
+    else
+    {
+        displayReviews($result);
+    }
+    
+}
+    
 ?>
 </div>
 <div id="footer">
