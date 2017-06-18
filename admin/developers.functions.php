@@ -29,4 +29,15 @@ include_once('../includes/common.functions.php');
           logSuccess("developer unapproved successfully");
  }
 
+ /**
+  * delete developer
+  * @param int $id developer id
+  */
+  function delDeveloper($id)
+  {
+    $sql="DELETE FROM developers WHERE developerID=$id ";
+    mysql_query($sql) or die("query failed due to ".mysql_error());
+    logSuccess("developer deleted successfully");
+  }
+  
 ?>
