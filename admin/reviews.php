@@ -53,6 +53,20 @@ if(isset($_GET['action']))
          header("location:./reviews.php");
             exit();
         break;
+        case "pending":
+        $sql='select reviews.reviewID,reviews.reveiwContent,reviews.approvedBy,reviews.reviewDate,users.userFirstName,users.userLastName,apps.appName
+  from reviews,users,apps where reviews.authorID = users.userID and reviews.reviewAppID=apps.appID AND reviews.approvedBy IS NULL';
+    $result=mysql_query($sql) or die("query failed due to ".mysql_error());
+    if(mysql_num_rows($result)==0)
+    {
+        echo "no review pending requests";
+    }
+    else
+    {
+        displayReviews($result);
+    }
+    
+        break;
     }
 }
 else
