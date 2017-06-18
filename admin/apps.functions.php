@@ -32,5 +32,15 @@ include_once('../includes/common.functions.php');
           logSuccess("app unapproved successfully");
  }
  
+  /**
+  * delete app
+  * @param int $id app id
+  */
+  function delApp($id)
+  {
+    $sql="DELETE FROM apps WHERE appID=$id ";
+    mysql_query($sql) or die("query failed due to ".mysql_error());
+    logSuccess("app deleted successfully");
+  }
  
 ?>
