@@ -21,4 +21,16 @@ include_once('../includes/common.functions.php');
           logSuccess("app approved successfully");
  }
 
+/**
+  * unapprove app
+  * @param int $id app id
+  */
+  function unapproveApp($id)
+ {
+    $sql="UPDATE apps SET approvedBy=NULL WHERE appID=$id ";  
+          mysql_query($sql) or die("query failed due to ".mysql_error());
+          logSuccess("app unapproved successfully");
+ }
+ 
+ 
 ?>
