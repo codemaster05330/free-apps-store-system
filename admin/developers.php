@@ -53,6 +53,20 @@ if(isset($_GET['action']))
          header("location:./developers.php");
             exit();
         break;
+        case "pending":
+        
+        $sql='select developers.developerID,developers.developerName,developers.developerEmail,developers.approvedBy,developers.developerWebsite
+        ,users.userFirstName,users.userLastName from developers,users where developers.authorID=users.userID AND developers.approvedBy IS NULL';
+         $result=mysql_query($sql) or die("query failed due to ".mysql_error());
+         if(mysql_num_rows($result)==0)
+        {
+            echo "no developers pending requests ";
+        }
+        else
+        {
+            displayDevelopers($result);
+        }
+        break;
         }
 }
 else
