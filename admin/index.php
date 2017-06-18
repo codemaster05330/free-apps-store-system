@@ -23,6 +23,7 @@ include_once('./layout/menu.php');
 <div id="quickActions">
 <?php
 include_once('./quickActions.php');
+include_once('./systemInfo.php');
 ?>
 </div>
 <div id="footer">
