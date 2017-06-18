@@ -42,4 +42,38 @@ include_once('../includes/common.functions.php');
     logSuccess("review deleted successfully");
   }
  
+ /**
+  * display all reviews and management actions
+  * @param result $result query result
+  */
+  function displayReviews($result)
+  {
+    echo '<table><tr><th>N</th><th>Review</th><th>Author</th> <th>App Name</th> <th>Review Date</th><th>actions</th></tr>';
+       $count=1;
+        while($row=mysql_fetch_assoc($result))
+        {
+            if($row['approvedBy']==NULL)
+            {
+                echo '<tr id="unapproved">';
+                $action="approve";
+                $actionStr="approve";
+            }
+            else
+            {
+                echo '<tr id="approved">';
+                $action="unapprove";
+                $actionStr="unapprove";
+            }
+            echo '<td>'.$count.'</td>';
+            $count++;
+            echo '<td>'.$row['reveiwContent'].'</td>';
+            echo '<td>'.$row['userFirstName'].' '.$row['userLastName'].'</td>';
+            echo '<td>'.$row['appName'].'</td>';
+            echo '<td>'.date('d-m-Y',strtotime($row['reviewDate'])).'</td>';
+            echo '<td><a href="./reviews.php?action='.$action.'&id='.$row['reviewID'].'" class="hrefBtn">'.$actionStr.'</a>';
+            echo '<a href="./reviews.php?action=del&id='.$row['reviewID'].'" class="hrefBtn">delete</a></td></tr>';
+        }
+        echo '</table>';
+  }
+  
 ?>
