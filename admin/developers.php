@@ -35,6 +35,15 @@ if(isset($_GET['action']))
         header("location:./developers.php");
         exit();
         break;
+        case "unapprove":
+         if(isset($_GET['id']))//redirect if id isn't defined
+        {
+            unapproveDeveloper($_GET['id']);
+           
+        }
+         header("location:./developers.php");
+            exit();
+        break;
         }
 }
 else
