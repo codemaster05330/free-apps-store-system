@@ -44,6 +44,15 @@ if(isset($_GET['action']))
          header("location:./reviews.php");
             exit();
         break;
+        case "del":
+        if(isset($_GET['id']))//redirect if id isn't defined
+        {
+            delReview($_GET['id']);
+           
+        }
+         header("location:./reviews.php");
+            exit();
+        break;
     }
 }
 else
