@@ -25,6 +25,17 @@ printError();
 printSuccess();
 if(isset($_GET['action']))
 {
+    switch ($_GET['action'])
+    {
+        case "approve":
+        if(isset($_GET['id']))//redirect if id isn't defined
+        {
+         approveApp($_GET['id'],$_SESSION['id']);   
+        }
+        header("location:./apps.php");
+        exit();
+        break;
+    }
 }
 else
 {
