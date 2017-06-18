@@ -44,6 +44,15 @@ if(isset($_GET['action']))
          header("location:./developers.php");
             exit();
         break;
+        case "del":
+        if(isset($_GET['id']))//redirect if id isn't defined
+        {
+            delDeveloper($_GET['id']);
+           
+        }
+         header("location:./developers.php");
+            exit();
+        break;
         }
 }
 else
