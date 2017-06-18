@@ -28,7 +28,7 @@ include_once('../includes/common.functions.php');
  {
     $sql="UPDATE reviews SET approvedBy=NULL WHERE reviewID=$id ";  
           mysql_query($sql) or die("query failed due to ".mysql_error());
-          logSuccess("review disapproved successfully");
+          logSuccess("review unapproved successfully");
  }
  
  /**
