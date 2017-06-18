@@ -19,6 +19,8 @@ include_once('dbconfig.php');
  */
  function printError()
  {
+    if(isset($_SESSION['errorBuffer']))
+    {
     $errorBuffer=
     $count=count($_SESSION['errorBuffer']);
     
@@ -33,7 +35,7 @@ include_once('dbconfig.php');
     } 
     echo '</ul>'; 
     }
-    
+    }
  }
  
  /**
