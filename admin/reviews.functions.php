@@ -20,4 +20,15 @@ include_once('../includes/common.functions.php');
           logSuccess("review approved successfully");
  }
  
+ /**
+  * disapprove review
+  * @param int $id review id
+  */
+  function disapproveReview($id)
+ {
+    $sql="UPDATE reviews SET approvedBy=NULL WHERE reviewID=$id ";  
+          mysql_query($sql) or die("query failed due to ".mysql_error());
+          logSuccess("review disapproved successfully");
+ }
+ 
 ?>
