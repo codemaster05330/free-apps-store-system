@@ -22,7 +22,26 @@ include_once('./layout/menu.php');
 <div id="content">
 <?php
 printError();
-printSuccess();  
+printSuccess(); 
+if(isset($_GET['action']))
+{
+}
+else
+{
+      $sql='select developers.developerID,developers.developerName,developers.developerEmail,developers.approvedBy,developers.developerWebsite
+        ,users.userFirstName,users.userLastName from developers,users where developers.authorID=users.userID';
+         $result=mysql_query($sql) or die("query failed due to ".mysql_error());
+    if(mysql_num_rows($result)==0)
+    {
+        echo "no developers acounts till now";
+    }
+    else
+    {
+        displayDevelopers($result);
+    }
+    
+}
+    
 ?>
 </div>
 <div id="footer">
