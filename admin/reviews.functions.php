@@ -31,4 +31,15 @@ include_once('../includes/common.functions.php');
           logSuccess("review disapproved successfully");
  }
  
+ /**
+  * delete review
+  * @param int $id review id
+  */
+  function delReview($id)
+  {
+    $sql="DELETE FROM reviews WHERE reviewID=$id ";
+    mysql_query($sql) or die("query failed due to ".mysql_error());
+    logSuccess("review deleted successfully");
+  }
+ 
 ?>
