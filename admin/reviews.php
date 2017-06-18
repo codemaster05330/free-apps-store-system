@@ -25,6 +25,23 @@ printError();
 printSuccess();
 if(isset($_GET['action']))
 {
+    switch ($_GET['action'])
+    {
+        case "approve":
+        if(!isset($_GET['id']))//redirect if id isn't defined
+        {
+            header("location:./reviews.php");
+            exit();
+        }
+        else
+        {
+        
+            approveReview($_GET['id'],$_SESSION['id']);
+            
+        }
+        break;
+        
+    }
 }
 else
 {
