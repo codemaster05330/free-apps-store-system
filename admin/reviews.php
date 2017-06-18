@@ -40,7 +40,15 @@ if(isset($_GET['action']))
             
         }
         break;
-        
+        case "unapprove":
+         if(isset($_GET['id']))//redirect if id isn't defined
+        {
+            unapproveReview($_GET['id']);
+           
+        }
+         header("location:./reviews.php");
+            exit();
+        break;
     }
 }
 else
