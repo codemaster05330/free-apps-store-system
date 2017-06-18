@@ -40,4 +40,41 @@ include_once('../includes/common.functions.php');
     logSuccess("developer deleted successfully");
   }
   
+   
+ /**
+  * display all developers and management actions
+  * @param result $result query result
+  */
+  function displayDevelopers($result)
+  {
+    echo '<table><tr><th>N</th><th>Name</th><th>Email</th> <th>Website</th> <th>Author</th><th>actions</th></tr>';
+       $count=1;
+        while($row=mysql_fetch_assoc($result))
+        {
+            if($row['approvedBy']==NULL)
+            {
+                echo '<tr id="unapproved">';
+                $action="approve";
+                $actionStr="approve";
+            }
+            else
+            {
+                echo '<tr id="approved">';
+                $action="unapprove";
+                $actionStr="unapprove";
+            }
+            echo '<td>'.$count.'</td>';
+            $count++;
+            echo '<td>'.$row['developerName'].'</td>';
+            echo '<td>'.$row['developerEmail'].'</td>';
+            echo '<td>'.$row['developerWebsite'].'</td>';
+            echo '<td>'.$row['userFirstName'].' '.$row['userLastName'].'</td>';
+            echo '<td><a href="./developers.php?action='.$action.'&id='.$row['developerID'].'" class="hrefBtn">'.$actionStr.'</a>';
+            echo '<a href="./developers.php?action=del&id='.$row['developerID'].'" class="hrefBtn">delete</a>';
+            echo '<a href="../developer.php?id='.$row['developerID'].'" class="hrefBtn">view</a></td></tr>';
+        }
+        echo '</table>';
+  }
+  
+ 
 ?>
