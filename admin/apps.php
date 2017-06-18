@@ -35,6 +35,15 @@ if(isset($_GET['action']))
         header("location:./apps.php");
         exit();
         break;
+        case "unapprove":
+         if(isset($_GET['id']))//redirect if id isn't defined
+        {
+            unapproveApp($_GET['id']);
+           
+        }
+         header("location:./reviews.php");
+            exit();
+        break;
     }
 }
 else
