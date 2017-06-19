@@ -31,7 +31,7 @@ if(isset($_GET['action']))
 else
 {
     $_SESSION['id']=1;
-    $sql="SELECT appID,appName,appIcon,appReleaseDate,appState FROM apps WHERE developerID={$_SESSION['id']}";
+    $sql="SELECT appID,appName,appIcon,appReleaseDate,appRating,appState FROM apps WHERE developerID={$_SESSION['id']}";
     $result=mysql_query($sql) or die("query failed due to ".mysql_error());
     if(mysql_num_rows($result)==0)
     {
@@ -41,7 +41,7 @@ else
     else
     {
         echo '<a href="./newApp.php" class="hrefBtn"> new App</a>';
-        echo '<table><tr><th>N</th><th>Name</th><th>Release Date</th><th>State</th><th>actions</th></tr>';
+        echo '<table><tr><th>N</th><th>Name</th><th>Release Date</th><th>Rating</th><th>State</th><th>actions</th></tr>';
         $count=1;
         while($row=mysql_fetch_assoc($result))
         {
@@ -49,6 +49,11 @@ else
             $count++;
             echo "<td>{$row['appName']}</td>";
              echo '<td>'.Date('d-m-y',strtotime($row['appReleaseDate'])).'</td>';
+             if($row['appRating']==NULL)
+             {
+                $row['appRating']=0;
+             }
+             echo "<td>{$row['appRating']}</td>";
              $state=$row['appState'];
              switch ($state)
              {
