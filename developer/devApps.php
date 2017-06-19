@@ -66,14 +66,15 @@ else
                 $actions='<a href="" class="hrefBtn">unpublish</a>';
                 $actions .='<a href="" class="hrefBtn">edit</a>';
                 $actions .='<a href="" class="hrefBtn">delete</a>';
+                $actions .='<a href="" class="hrefBtn">reviews</a>';
                 break;
-                case 2 :
+                case 3 :
                 $state="unpublished";
                 $actions='<a href="" class="hrefBtn">publish</a>';
                 $actions .='<a href="" class="hrefBtn">edit</a>';
                 $actions .='<a href="" class="hrefBtn">delete</a>';
                 break;
-                case 3 :
+                case 2 :
                 $state="reported";
                 $actions ='<a href="" class="hrefBtn">edit</a>';
                 $actions .='<a href="" class="hrefBtn">delete</a>';
