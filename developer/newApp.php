@@ -25,6 +25,13 @@ include_once('./layout/devMenu.php');
 <?php
 printError();
 printSuccess();
+if(isset($_POST['submit']))
+{
+    
+}else
+{
+    include_once('newAppForm.php');
+}
 ?>
 </div>
 
