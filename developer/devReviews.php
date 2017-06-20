@@ -34,7 +34,21 @@ if(isset($_GET['appID']))
 }
 else
 {
-    
+     $_SESSION['id']=1;
+    $sql="SELECT appID FROM apps WHERE developerID={$_SESSION['id']} AND appState=1";
+    $result=mysql_query($sql) or die("query failed due to ".mysql_error());
+    if(mysql_num_rows($result)==0)
+    {
+        echo "you havn't added apps yet.";
+        echo '<a href="./newApp.php" class="hrefBtn"> new App</a>';
+    }
+    else
+    {
+      while($row=mysql_fetch_assoc($result))
+        {
+          printAppReviews($row['appID']);  
+        }
+    }
 }
 ?>
 </div>
