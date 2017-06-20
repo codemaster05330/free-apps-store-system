@@ -1,4 +1,4 @@
-<form id="newApp" action="" method="post" enctype="multipart/form-data">
+<form id="newApp" action="newApp.php" method="post" enctype="multipart/form-data">
 <fieldset>
 <legend>App Information</legend>
 <p></p><label>Name : </label><input type="text" required name="name"/></p>
@@ -87,7 +87,7 @@ echo '</select></p>';
 </fieldset>
 <fieldset>
 <legend>Finish</legend>
-<input type="submit" value="submit"/> 
+<input type="submit" value="submit" name="submit"/> 
 </fieldset>
 </form>
 <script src="../js/scripts.js"></script>
