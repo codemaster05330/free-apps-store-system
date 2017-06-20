@@ -25,11 +25,16 @@ include_once('./layout/devMenu.php');
 <?php
 printError();
 printSuccess();
+include_once('devReviews.functions.php');
 if(isset($_GET['appID']))
 {
+     
+    printAppReviews($_GET['appID']);
+       
 }
 else
 {
+    
 }
 ?>
 </div>
