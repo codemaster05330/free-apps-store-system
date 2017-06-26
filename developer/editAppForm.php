@@ -48,7 +48,7 @@
     }
     }
 ?>
-<form id="newApp" action="newApp.php" method="post" enctype="multipart/form-data">
+<form id="newApp" action="editApp.php" method="post" enctype="multipart/form-data">
 <fieldset>
 <legend>App Information</legend>
 <p></p><label>Name : </label><input type="text" required name="name" value="<?php echo "$appName"; ?>"/></p>
