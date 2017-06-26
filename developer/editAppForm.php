@@ -62,7 +62,7 @@
 <p><label>System Requirement:</label><br />
 <textarea  required cols="25" rows="4" name="requirement" ><?php echo "$appReq"; ?></textarea><p>
 
-<p><label>Icon : </label> <?php echo '<img id="mediumIcon" src="data:image;base64,'.$icon.'">';?><input type="file" required name="icon"/></p>
+<p><label>Icon : </label> <?php echo '<img id="mediumIcon" src="data:image;base64,'.$icon.'">';?><input type="file"  name="icon"/></p>
 
 <p><label>Version : </label><input type="text" required name="version" value="<?php echo "$appVer"; ?>"/></p>
 
