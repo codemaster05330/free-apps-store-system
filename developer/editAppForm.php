@@ -20,7 +20,7 @@
     else
     {
      $row=mysql_fetch_assoc($result);
-     
+    
     $appName=$row['appName'];
     $shortDesc=$row['appShortDesc'];
     $longDesc=$row['applongDesc'];
@@ -51,6 +51,7 @@
 <form id="newApp" action="editApp.php" method="post" enctype="multipart/form-data">
 <fieldset>
 <legend>App Information</legend>
+<input type="hidden" name="appID" value="<?php echo "$appID"; ?>" /> 
 <p></p><label>Name : </label><input type="text" required name="name" value="<?php echo "$appName"; ?>"/></p>
 
 <p><label>Short Description :</label><br />
