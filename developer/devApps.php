@@ -66,7 +66,7 @@ else
                 $actions='<a href="" class="hrefBtn">unpublish</a>';
                 $actions .='<a href="" class="hrefBtn">edit</a>';
                 $actions .='<a href="" class="hrefBtn">delete</a>';
-                $actions .='<a href="" class="hrefBtn">reviews</a>';
+                $actions .='<a href="devReviews.php?appID='.$row['appID'].'" class="hrefBtn">reviews</a>';
                 break;
                 case 3 :
                 $state="unpublished";
