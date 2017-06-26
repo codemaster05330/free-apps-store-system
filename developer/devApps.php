@@ -38,6 +38,14 @@ if(isset($_GET['action']))
         header("location:./devApps.php");
         exit();
         break;
+        case "unpublish":
+        if(isset($_GET['id']))//redirect if id isn't defined
+        {
+         unpublishDevApp($_GET['id'],$_SESSION['id']);   
+        }
+        header("location:./devApps.php");
+        exit();
+        break;
     }
 }
 else
