@@ -28,6 +28,17 @@ printError();
 printSuccess();
 if(isset($_GET['action']))
 {
+     switch ($_GET['action'])
+    {
+        case "publish":
+        if(isset($_GET['id']))//redirect if id isn't defined
+        {
+         publishDevApp($_GET['id'],$_SESSION['id']);   
+        }
+        header("location:./devApps.php");
+        exit();
+        break;
+    }
 }
 else
 {
