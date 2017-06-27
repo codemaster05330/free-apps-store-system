@@ -20,7 +20,25 @@ include_once('./layout/searchPanel.php');
 <?php
 if(isset($_GET['link'])&& isset($_GET['appID']))
 {
-    
+    echo 'redirect to '.$_GET['link'];
+    $sql="SELECT appDownloads FROM apps WHERE appState=1 AND appID={$_GET['appID']}";
+    $result=mysql_query($sql) or die("query failed due to ".mysql_error());
+    if(mysql_num_rows($result)==0)
+    {
+       //no app id defined >> redirect
+        header("location:./index.php");
+        exit(); 
+    }
+    else
+    {
+       $row=mysql_fetch_assoc($result);
+       $downCount=$row['appDownloads'];
+       $downCount++;
+       $sql ="UPDATE apps SET appDownloads=$downCount WHERE appID={$_GET['appID']}";
+       $result=mysql_query($sql) or die("query failed due to ".mysql_error());
+       header("location:{$_GET['link']}");
+       exit();
+    }
 }
 elseif(isset($_GET['appID']))
 {
