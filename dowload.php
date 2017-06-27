@@ -17,7 +17,22 @@ include_once('./layout/searchPanel.php');
 </div>
 <div id="wrapper">
 <div id="content">
-
+<?php
+if(isset($_GET['link'])&& isset($_GET['appID']))
+{
+    
+}
+elseif(isset($_GET['appID']))
+{
+    
+}
+else
+{
+    //no app id defined >> redirect
+    header("location:./index.php");
+    exit();
+}
+?>
 </div>
 <div id="sideBars">
 <?php
