@@ -25,6 +25,8 @@ include_once('./layout/devMenu.php');
 <?php
 printError();
 printSuccess();
+include_once('devQuickActions.php');
+include_once('devInfo.php');
 ?>
 </div>
 
