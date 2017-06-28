@@ -4,7 +4,9 @@ include_once('./includes/common.functions.php');
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>download</title>
+    <title>devloper</title>
+     <link rel="stylesheet" href="./styles/mainStyle.css" type="text/css"/>
+     <link rel="stylesheet" href="./styles/developer.css" type="text/css"/>
 </head>
 
 <body>
@@ -23,7 +25,7 @@ include_once('./developerContent.php');
 </div>
 <div id="sideBars">
 <?php
-//include_once('./layout/topDownloadsBar.php');
+include_once('./layout/topDownloadsBar.php');
 ?>
 </div>
 </div>

@@ -5,6 +5,7 @@ include_once('./includes/common.functions.php');
 <html>
 <head>
     <title>download</title>
+    <link rel="stylesheet" href="./styles/mainStyle.css" type="text/css"/>
 </head>
 
 <body>
@@ -62,7 +63,7 @@ elseif(isset($_GET['appID']))
     {
          echo '<tr id="downloadLinks"><td colspan="2"><a href="./download.php?appID='.$row['appID'].'&link='.$row['appSecondaryLink'].'">Download Link 2</a></td></tr>';
     }
-    echo '<table>';
+    echo '</table>';
     }
     
 }
@@ -76,7 +77,7 @@ else
 </div>
 <div id="sideBars">
 <?php
-//include_once('./layout/topDownloadsBar.php');
+include_once('./layout/topDownloadsBar.php');
 ?>
 </div>
 </div>
