@@ -1,6 +1,6 @@
 <?php
 $appsFilter="";
-$APPSCOUNT=2;
+$APPSCOUNT=8;
 $sort="";
 
 if(isset($_GET['st']))
@@ -35,16 +35,16 @@ if(isset($_SESSION['platform']))
  $appsFilter .=" AND appPlatformID={$_SESSION['platform']} ";   
 }
 
-if(isset($_SESSION['mc']))
+if(isset($_SESSION['mCat']))
 {
   
-    $appsFilter .=" AND appMainCatID={$_SESSION['mc']} ";   
+    $appsFilter .=" AND appMainCatID={$_SESSION['mCat']} ";   
 }
 
-if(isset($_SESSION['sc']))
+if(isset($_SESSION['sCat']))
 {
    
-    $appsFilter .=" AND appSubCatID={$_SESSION['sc']} ";   
+    $appsFilter .=" AND appSubCatID={$_SESSION['sCat']} ";   
 }
 
 if(isset($_SESSION['sort']))
