@@ -33,7 +33,7 @@
      echo  '<strong>'.$row['developerName'].'</strong></p>';
      
      echo '<p id="devContact">';
-     echo '<table><caption>Information</caption><tr>';
+     echo '<strong>Information</strong><table><tr>';
      echo '<td>'.$row['developerEmail'].'</td></tr>';
      echo '<tr>';
      echo '<td><a href="'.$row['developerWebsite'].'">'.$row['developerWebsite'].'</a></td></tr>';
@@ -42,7 +42,7 @@
      echo '<tr> ';
      echo '<td>'.$row['country'].' , '.$row['city'].' , '.$row['state'].' '.$row['zipcode'].'</td></tr></table>';
      
-     echo '<p id="devApps"><table><caption>Published Applications</caption>';
+     echo '<p id="devApps"><strong>Published Applications</strong><table>';
     $sql="SELECT appID,appName,appIcon,appShortDesc,appVersion FROM apps WHERE appState=1 AND developerID=$devID ORDER BY  appReleaseDate  DESC";
     $result=mysql_query($sql) or die("query failed due to ".mysql_error());
     $count=1;
@@ -50,11 +50,11 @@
     {
     echo "<tr><td>$count</td><td>";
     $count++;
-    echo '<table id="smallApp"><tr><td rowspan="2"><img id="mediumIcon" src="data:image;base64,'.$row['appIcon'].'"></td>';
+    echo '<table id="smallApp"><tr><td rowspan="2" id="appLogo"><img id="mediumIcon" src="data:image;base64,'.$row['appIcon'].'"></td>';
     echo '<td><a href="../app.php?appID='.$row['appID'].'"><strong>'.$row['appName'].' '.$row['appVersion'].'</strong></a>';
     echo '<p><small>'.$row['appShortDesc'].'</small></p></td></tr>';
    // echo '<tr><td><small>Downloads : '.$row['appDownloads'].'</small></td></tr>';
-    echo '<table></td></tr>'; 
+    echo '</table></td></tr>'; 
     }
 echo '</table></p>'; 
      
