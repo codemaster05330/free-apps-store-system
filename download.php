@@ -55,13 +55,13 @@ elseif(isset($_GET['appID']))
     {
         $row=mysql_fetch_assoc($result);
         
-        echo '<table id="mediumIcon"><tr><td><img id="mediumIcon" src="data:image;base64,'.$row['appIcon'].'"></td>';
+        echo '<table id="miniApp"><tr><td><img id="mediumIcon" src="data:image;base64,'.$row['appIcon'].'"></td>';
     echo '<td><a href="../app.php?appID='.$row['appID'].'"><strong>'.$row['appName'].' '.$row['appVersion'].'</strong></a>';
     echo '<p><small>'.$row['appShortDesc'].'</small></p></td></tr>';
-    echo '<tr id="downloadLinks"><td colspan="2"><a href="./download.php?appID='.$row['appID'].'&link='.$row['appPrimaryLink'].'">Download Link 1</a></td></tr>';
+    echo '<tr id="downloadLinks"><td colspan="2"><a href="./download.php?appID='.$row['appID'].'&link='.$row['appPrimaryLink'].'" id="hrefBtn">Download Link 1</a></td></tr>';
     if($row['appSecondaryLink']!="")
     {
-         echo '<tr id="downloadLinks"><td colspan="2"><a href="./download.php?appID='.$row['appID'].'&link='.$row['appSecondaryLink'].'">Download Link 2</a></td></tr>';
+         echo '<tr id="downloadLinks"><td colspan="2"><a href="./download.php?appID='.$row['appID'].'&link='.$row['appSecondaryLink'].'" id="hrefBtn">Download Link 2</a></td></tr>';
     }
     echo '</table>';
     }
