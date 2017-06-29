@@ -21,8 +21,8 @@ include_once('./includes/common.functions.php');
     else
     {
      $row=mysql_fetch_assoc($result);
-     echo '<table><tr><td rowspan="3"><img id="mediumIcon" src="data:image;base64,'.$row['appIcon'].'"></td>';
-     echo '<td>'.$row['appName'].'</td><td>Rating:'.$row['appRating'].'</td></tr>';
+     echo '<table><tr><td rowspan="3" id="appLogo"><img id="mediumIcon" src="data:image;base64,'.$row['appIcon'].'"></td>';
+     echo '<td><h4>'.$row['appName'].'</h4></td><td>Rating:'.$row['appRating'].'</td></tr>';
      $sql2="SELECT developerName FROM developers WHERE developerID={$row['developerID']}";
      $result2=mysql_query($sql2) or die("query failed due to ".mysql_error());
      $row2=mysql_fetch_assoc($result2);
@@ -34,14 +34,14 @@ include_once('./includes/common.functions.php');
      echo '<img src="'.$row['appScreenshot1'].'">';
      echo '</p>';
      
-     echo '<p id="longDesc"><h4>Description</h4>';
+     echo '<h4>Description</h4><p id="longDesc">';
      echo "{$row['applongDesc']} </p>";
      
-     echo '<p id="requirements"><h4>System Requirements</h4>';
+     echo '<h4>System Requirements</h4><p id="requirements">';
      echo "{$row['appSysRequirements']} </p>";
      
-      echo '<p id="requirements">';
-      echo '<table><caption>More</caption><tr><td>Language : '.$row['appLanguage'].'</td><td>Release Date : '.date('d-m-y',strtotime($row['appReleaseDate'])).'</td></tr>';
+      echo '<h4>More Information</h4><div id="more">';
+      echo '<table><tr><td>Language : '.$row['appLanguage'].'</td><td>Release Date : '.date('d-m-y',strtotime($row['appReleaseDate'])).'</td></tr>';
      
      $sql2="SELECT platformName FROM platforms WHERE platformID={$row['appPlatformID']}";
      $result2=mysql_query($sql2) or die("query failed due to ".mysql_error());
@@ -63,7 +63,7 @@ include_once('./includes/common.functions.php');
      }
       echo '</td></tr>';
       echo '<tr><td>File Size : '.$row['appSize'].' KB</td><td><a  href="./developer.php?id='.$row['developerID'].'"id="hrefBtn">View Developer</a></td></tr>';
-      echo '</table></p>';
+      echo '</table></div>';
     }
 
 }
