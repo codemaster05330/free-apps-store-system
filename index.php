@@ -4,7 +4,8 @@ include_once('./includes/common.functions.php');
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>download</title>
+    <title>Free Apps Store</title>
+    <link rel="stylesheet" href="./styles/mainStyle.css" type="text/css"/>
 </head>
 
 <body>
