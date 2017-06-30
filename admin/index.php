@@ -31,11 +31,11 @@ include_once('./systemInfo.php');
 </div>
 </div>
 </div>
-<div id="footerBar">
+
 <?php
 include_once('./layout/footer.php');
 ?>
-</div>
+
 
 </body>
 </html>

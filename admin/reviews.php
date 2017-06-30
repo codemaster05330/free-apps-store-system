@@ -10,12 +10,13 @@ include_once('reviews.functions.php');
 </head>
 
 <body>
-<div id="wrapper">
+
 <div id="upperPanel">
 <?php
 include_once('./layout/upperPanel.php');
 ?>
 </div>
+<div id="wrapper">
 <div id="navigationBar">
 <?php
 include_once('./layout/menu.php');
@@ -89,11 +90,11 @@ else
     
 ?>
 </div>
-<div id="footer">
+</div>
 <?php
 include_once('./layout/footer.php');
 ?>
-</div>
-</div>
+
+
 </body>
 </html>
