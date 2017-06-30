@@ -87,7 +87,7 @@ echo '</select></p>';
 </fieldset>
 <fieldset>
 <legend>Finish</legend>
-<input type="submit" value="submit" name="submit"/> 
+<input type="submit" value="submit" name="submit" id="hrefBtn"/> 
 </fieldset>
 </form>
 <script src="../js/scripts.js"></script>
