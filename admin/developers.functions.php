@@ -69,9 +69,9 @@ include_once('../includes/common.functions.php');
             echo '<td>'.$row['developerEmail'].'</td>';
             echo '<td>'.$row['developerWebsite'].'</td>';
             echo '<td>'.$row['userFirstName'].' '.$row['userLastName'].'</td>';
-            echo '<td><a href="./developers.php?action='.$action.'&id='.$row['developerID'].'" class="hrefBtn">'.$actionStr.'</a>';
-            echo '<a href="./developers.php?action=del&id='.$row['developerID'].'" class="hrefBtn">delete</a>';
-            echo '<a href="../developer.php?id='.$row['developerID'].'" class="hrefBtn">view</a></td></tr>';
+            echo '<td><a href="./developers.php?action='.$action.'&id='.$row['developerID'].'" id="hrefBtn">'.$actionStr.'</a>';
+            echo '<a href="./developers.php?action=del&id='.$row['developerID'].'" id="hrefBtn">delete</a>';
+            echo '<a href="../developer.php?id='.$row['developerID'].'" id="hrefBtn">view</a></td></tr>';
         }
         echo '</table>';
   }

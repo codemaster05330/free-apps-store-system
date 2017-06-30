@@ -107,8 +107,8 @@ include_once('../includes/common.functions.php');
             echo '<td>'.$level.'</td>';
             echo '<td>'.date('d-m-Y',strtotime($row['joinDate'])).'</td>';
             echo '<td>'.date('d-m-Y',strtotime($row['lastLogin'])).'</td>';
-            echo '<td><a href="./user.php?action=privilge&id='.$row['userID'].'" class="hrefBtn">Change Privilege</a>';
-            echo '<a href="./user.php?action=del&id='.$row['userID'].'" class="hrefBtn">delete</a></td></tr>';
+            echo '<td><a href="./user.php?action=privilge&id='.$row['userID'].'" id="hrefBtn">Change Privilege</a>';
+            echo '<a href="./user.php?action=del&id='.$row['userID'].'" id="hrefBtn">delete</a></td></tr>';
         }
         echo '</table>';
     

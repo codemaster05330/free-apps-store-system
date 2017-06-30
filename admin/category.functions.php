@@ -130,8 +130,8 @@ echo '</select></label><br />
              $name=$row2['catName'];
             }
             echo '<td>'.$name.'</td>';
-            echo '<td><a href="./category.php?action=edit&id='.$row['catID'].'" class="hrefBtn">edit</a>';
-            echo '<a href="./category.php?action=del&id='.$row['catID'].'" class="hrefBtn">delete</a></td></tr>';
+            echo '<td><a href="./category.php?action=edit&id='.$row['catID'].'" id="hrefBtn">edit</a>';
+            echo '<a href="./category.php?action=del&id='.$row['catID'].'" id="hrefBtn">delete</a></td></tr>';
         }
         echo '</table>';
     }

@@ -70,8 +70,8 @@ include_once('../includes/common.functions.php');
             echo '<td>'.$row['userFirstName'].' '.$row['userLastName'].'</td>';
             echo '<td>'.$row['appName'].'</td>';
             echo '<td>'.date('d-m-Y',strtotime($row['reviewDate'])).'</td>';
-            echo '<td><a href="./reviews.php?action='.$action.'&id='.$row['reviewID'].'" class="hrefBtn">'.$actionStr.'</a>';
-            echo '<a href="./reviews.php?action=del&id='.$row['reviewID'].'" class="hrefBtn">delete</a></td></tr>';
+            echo '<td><a href="./reviews.php?action='.$action.'&id='.$row['reviewID'].'" id="hrefBtn">'.$actionStr.'</a>';
+            echo '<a href="./reviews.php?action=del&id='.$row['reviewID'].'" id="hrefBtn">delete</a></td></tr>';
         }
         echo '</table>';
   }
