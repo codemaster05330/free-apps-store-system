@@ -4,7 +4,9 @@ include_once('../includes/common.functions.php');
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Admin Dashboard</title>
+    <title>Edit app</title>
+    <link rel="stylesheet" href="../styles/mainStyle.css" type="text/css"/>
+    <link rel="stylesheet" href="../styles/dashboard.css" type="text/css"/>
 </head>
 
 <body>
