@@ -53,13 +53,13 @@ include_once('../includes/common.functions.php');
        $count=1;
         while($row=mysql_fetch_assoc($result))
         {
-            if($row['approvedBy']==NULL)
+            if($row['appState']==0)
             {
                 echo '<tr id="unapproved">';
                 $action="approve";
                 $actionStr="approve";
             }
-            else
+            else if($row['appState']==1)
             {
                 echo '<tr id="approved">';
                 $action="unapprove";
@@ -67,7 +67,7 @@ include_once('../includes/common.functions.php');
             }
             echo '<td>'.$count.'</td>';
             $count++;
-            echo '<td>'.$row['appName'].'</td>';
+            echo '<td id="appName">'.$row['appName'].'</td>';
             echo '<td>'.$row['appShortDesc'].'</td>';
             $mainCat=$row['catName'];
             $subCat="";
@@ -85,7 +85,7 @@ include_once('../includes/common.functions.php');
             echo '<td>'.$row['developerName'].'</td>';
             echo '<td><a href="./apps.php?action='.$action.'&id='.$row['appID'].'" id="hrefBtn">'.$actionStr.'</a>';
             echo '<a href="./apps.php?action=del&id='.$row['appID'].'" id="hrefBtn">delete</a>';
-             echo '<a href="../app.php?id='.$row['appID'].'" id="hrefBtn">view</a></td></tr>';
+             echo '<a href="../app.php?appID='.$row['appID'].'" id="hrefBtn">view</a></td></tr>';
         }
         echo '</table>';
   }
