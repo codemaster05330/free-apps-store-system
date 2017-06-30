@@ -8,8 +8,8 @@
  */
  ?>
  <ul id="adminMenu">
- <li><a href="./index.php">Dashboard</a></li>
- <li><a href="./newApp.php">new App</a></li>
- <li><a href="./devApps.php">apps list</a></li>
- <li><a href="./devReviews.php">Reviews</a></li>
+ <li><a href="./index.php" id="hrefBtn">Dashboard</a></li>
+ <li><a href="./newApp.php" id="hrefBtn">new App</a></li>
+ <li><a href="./devApps.php" id="hrefBtn">apps list</a></li>
+ <li><a href="./devReviews.php" id="hrefBtn">Reviews</a></li>
  </ul>
