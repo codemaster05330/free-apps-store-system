@@ -4,7 +4,9 @@ include_once('category.functions.php');
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Admin Dashboard</title>
+    <title>Categories</title>
+    <link rel="stylesheet" href="../styles/mainStyle.css" type="text/css"/>
+    <link rel="stylesheet" href="../styles/dashboard.css" type="text/css"/>
 </head>
 
 <body>
@@ -95,11 +97,11 @@ else
    $result=mysql_query($sql) or die("query failed due to ".mysql_error());
    if(mysql_num_rows($result)==0)
     {
-        echo 'NO categories defined yet , <a href="./category.php?action=new" class="hrefBtn">add new category</a>';
+        echo 'NO categories defined yet , <a href="./category.php?action=new" id="hrefBtn">add new category</a>';
     }
     else
     {
-        echo '<p><a href="./category.php?action=new" class="hrefBtn">add new category</a></p>';
+        echo '<p><a href="./category.php?action=new" id="hrefBtn">add new category</a></p>';
         displayCategories($result);
     }
     

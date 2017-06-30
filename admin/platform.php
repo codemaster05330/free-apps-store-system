@@ -4,7 +4,9 @@ include_once('platform.functions.php');
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Admin Dashboard</title>
+    <title>Platforms</title>
+    <link rel="stylesheet" href="../styles/mainStyle.css" type="text/css"/>
+    <link rel="stylesheet" href="../styles/dashboard.css" type="text/css"/>
 </head>
 
 <body>
@@ -87,11 +89,11 @@ else
     $result=mysql_query($sql) or die("query failed due to ".mysql_error());
     if(mysql_num_rows($result)==0)
     {
-        echo 'NO platforms defined yet , <a href="./platform.php?action=new" class="hrefBtn">add new platform</a>';
+        echo 'NO platforms defined yet , <a href="./platform.php?action=new" id="hrefBtn">add new platform</a>';
     }
     else
     {
-        echo'<p><a href="./platform.php?action=new" class="hrefBtn">add new platform</a></p>';
+        echo'<p><a href="./platform.php?action=new" id="hrefBtn">add new platform</a></p>';
         displayPlatforms($result);
     }
     
