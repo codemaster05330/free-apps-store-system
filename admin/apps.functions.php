@@ -83,9 +83,9 @@ include_once('../includes/common.functions.php');
             
             echo '<td>'.$mainCat.' '.$subCat.'</td>';
             echo '<td>'.$row['developerName'].'</td>';
-            echo '<td><a href="./apps.php?action='.$action.'&id='.$row['appID'].'" class="hrefBtn">'.$actionStr.'</a>';
-            echo '<a href="./apps.php?action=del&id='.$row['appID'].'" class="hrefBtn">delete</a>';
-             echo '<a href="../app.php?id='.$row['appID'].'" class="hrefBtn">view</a></td></tr>';
+            echo '<td><a href="./apps.php?action='.$action.'&id='.$row['appID'].'" id="hrefBtn">'.$actionStr.'</a>';
+            echo '<a href="./apps.php?action=del&id='.$row['appID'].'" id="hrefBtn">delete</a>';
+             echo '<a href="../app.php?id='.$row['appID'].'" id="hrefBtn">view</a></td></tr>';
         }
         echo '</table>';
   }

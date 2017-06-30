@@ -43,9 +43,9 @@ $sql='SELECT * FROM reviews WHERE approvedBy IS NULL';
 $result=mysql_query($sql) or die("query failed due to ".mysql_error());
 $reviews=mysql_num_rows($result);
 
-echo "<tr><td><a href=\"./developers.php?action=pending\">Developer</a></td><td>$developers</td></tr>
-<tr><td><a href=\"./apps.php?action=pending\">Apps</a></td><td>$apps</td></tr>
-<tr><td><a href=\"./reviews.php?action=pending\">Reviews</a></td><td>$reviews</td></tr>";
+echo "<tr><td><a href=\"./developers.php?action=pending\" id=\"hrefBtn\">Developer</a></td><td>$developers</td></tr>
+<tr><td><a href=\"./apps.php?action=pending\" id=\"hrefBtn\">Apps</a></td><td>$apps</td></tr>
+<tr><td><a href=\"./reviews.php?action=pending\" id=\"hrefBtn\">Reviews</a></td><td>$reviews</td></tr>";
 ?>
 </table>
 </div>
