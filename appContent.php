@@ -30,9 +30,9 @@ include_once('./includes/common.functions.php');
      echo '<td>Downloads:'.$row['appDownloads'].'</td></tr>';
      echo '<tr><td colspan="2"><a href="./download.php?appID='.$row['appID'].'" id="hrefBtn">download</a></td></tr></table>';
      
-     echo '<p id="gallery">';
-     echo '<img src="'.$row['appScreenshot1'].'">';
-     echo '</p>';
+     echo '<div id="gallery">';
+     include_once('screenshots.php');
+     echo '</div>';
      
      echo '<h4>Description</h4><p id="longDesc">';
      echo "{$row['applongDesc']} </p>";
