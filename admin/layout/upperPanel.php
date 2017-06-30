@@ -1,3 +1,3 @@
-<div id="rightPanel">
-wellcome admin,<a href="" id="hrefBtn">logout</a>
-</div>
+<?php
+include_once('../layout/upperBar.php');
+?>
