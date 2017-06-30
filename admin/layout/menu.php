@@ -13,5 +13,6 @@
  <li><a href="./developers.php" id="hrefBtn">Developers</a></li>
  <li><a href="./category.php" id="hrefBtn">Categories</a></li>
  <li><a href="./platform.php" id="hrefBtn">Platforms</a></li>
+  <li><a href="./apps.php" id="hrefBtn">Apps</a></li>
  <li><a href="./reviews.php" id="hrefBtn">Reviews</a></li>
  </ul>
