@@ -25,7 +25,7 @@ else
     {
         echo "<tr><td>$count</td>";
         $count++;
-        echo '<td><img id="smallIcon" src="data:image;base64,'.$row['appIcon'].'"> '.$row['appName'].'</td>';
+        echo '<td id="appLogo"><img id="smallIcon" src="data:image;base64,'.$row['appIcon'].'"> '.$row['appName'].'</td>';
         echo "<td>{$row['appRating']}</td>";
         echo "<td>{$row['appDownloads']}</td></tr>";
     }
