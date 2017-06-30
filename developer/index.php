@@ -4,7 +4,9 @@ include_once('../includes/common.functions.php');
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Admin Dashboard</title>
+    <title>Developer Dashboard</title>
+    <link rel="stylesheet" href="../styles/mainStyle.css" type="text/css"/>
+    <link rel="stylesheet" href="../styles/dashboard.css" type="text/css"/>
 </head>
 
 <body>
@@ -31,7 +33,7 @@ include_once('devInfo.php');
 </div>
 
 </div>
-<div id="footer">
+<div id="footerBar">
 <?php
 include_once('./layout/devFooter.php');
 ?>
