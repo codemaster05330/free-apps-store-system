@@ -13,7 +13,7 @@ include_once('../includes/common.functions.php');
  */
  function newCatForm()
  {
-    echo '<form action="category.php?action=add" method="post">
+    echo '<form action="category.php?action=add" method="post"  id="editForm">
 <label>Main Category <select name="mainCat"><option value="-1">none</option>';
 $sql='SELECT * FROM categories WHERE catParent IS NULL ';
 $result=mysql_query($sql) or die("query failed due to ".mysql_error());
@@ -48,7 +48,7 @@ echo '</select></label><br />
              $name=$row['catName'];
              $parent= $row['catParent'];
              $id=$row['catID'];
-             echo '<form action="category.php?action=update&id='.$id.'" method="post">
+             echo '<form action="category.php?action=update&id='.$id.'" method="post" id="editForm">
                 <label>Main Category <select name="mainCat"><option value="-1">none</option>';
                 
                 $sql='SELECT * FROM categories WHERE catParent IS NULL ';

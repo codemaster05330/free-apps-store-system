@@ -14,7 +14,7 @@ include_once('../includes/common.functions.php');
  */
 function newPlatformForm()
 {
-    echo '<form action="./platform.php?action=add" method="post" enctype="multipart/form-data">
+    echo '<form action="./platform.php?action=add" method="post" enctype="multipart/form-data"  id="editForm">
         <label>Platform Name :</label><input type="text" name="name" /><br />
         <label>Platform Icon :</label><input type="file" value="upload" name="icon" /><br />
         <input  type="submit" name="submit" value="submit" />
@@ -41,7 +41,7 @@ function newPlatformForm()
              $name=$row['platformName'];
              $icon= $row['platformIcon'];
              $id=$row['platformID'];
-             echo '<form action="./platform.php?action=update&id='.$id.'" method="post" enctype="multipart/form-data">
+             echo '<form action="./platform.php?action=update&id='.$id.'" method="post" enctype="multipart/form-data"  id="editForm">
                     <label>Platform Name :</label><input type="text" name="name" value="'.$name.'" /><br />
                     <label>Platform Icon :</label><input type="file" value="upload" name="icon" /><br />
                     <input  type="submit" name="submit" value="submit" />
