@@ -34,7 +34,7 @@ include_once('../includes/common.functions.php');
         else
         {
             $count=1;
-          echo '<table><tr><th>N</th><th>Review</th> <th>rate</th> <th>author</th> <th>date</th></tr>';
+          echo '<table class="appsList"><tr><th>N</th><th>Review</th> <th>rate</th> <th>author</th> <th>date</th></tr>';
           while( $row=mysql_fetch_assoc($result))
           {
             echo "<tr><td>$count</td>";

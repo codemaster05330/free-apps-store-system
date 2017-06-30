@@ -55,18 +55,18 @@ include_once('../includes/common.functions.php');
     if(mysql_num_rows($result)==0)
     {
         echo "you havn't added apps yet.";
-        echo '<a href="./newApp.php" class="hrefBtn"> new App</a>';
+        echo '<a href="./newApp.php" id="hrefBtn"> new App</a>';
     }
     else
     {
-        echo '<a href="./newApp.php" class="hrefBtn"> new App</a>';
-        echo '<table><tr><th>N</th><th>Name</th><th>Release Date</th><th>Rating</th><th>State</th><th>actions</th></tr>';
+        echo '<a href="./newApp.php" id="hrefBtn"> new App</a>';
+        echo '<table class="appsList"><tr><th>N</th><th>Name</th><th>Release Date</th><th>Rating</th><th>State</th><th>actions</th></tr>';
         $count=1;
         while($row=mysql_fetch_assoc($result))
         {
             echo "<tr><td>$count</td>";
             $count++;
-            echo "<td>{$row['appName']}</td>";
+            echo "<td id=\"appName\">{$row['appName']}</td>";
              echo '<td>'.Date('d-m-y',strtotime($row['appReleaseDate'])).'</td>';
              if($row['appRating']==NULL)
              {
@@ -82,21 +82,21 @@ include_once('../includes/common.functions.php');
                 break;
                 case 1 :
                 $state="published";
-                $actions='<a href="./devApps.php?action=unpublish&id='.$row['appID'].'"" class="hrefBtn">unpublish</a>';
-                $actions .='<a href="" class="hrefBtn">edit</a>';
-                $actions .='<a href="./devApps.php?action=delete&id='.$row['appID'].'""class="hrefBtn">delete</a>';
-                $actions .='<a href="devReviews.php?appID='.$row['appID'].'" class="hrefBtn">reviews</a>';
+                $actions='<a href="./devApps.php?action=unpublish&id='.$row['appID'].'"" id="hrefBtn">unpublish</a>';
+                $actions .='<a href="" id="hrefBtn">edit</a>';
+                $actions .='<a href="./devApps.php?action=delete&id='.$row['appID'].'"" id="hrefBtn">delete</a>';
+                $actions .='<a href="devReviews.php?appID='.$row['appID'].'" id="hrefBtn">reviews</a>';
                 break;
                 case 3 :
                 $state="unpublished";
-                $actions='<a href="./devApps.php?action=publish&id='.$row['appID'].'"" class="hrefBtn">publish</a>';
-                $actions .='<a href="" class="hrefBtn">edit</a>';
-                $actions .='<a href="./devApps.php?action=delete&id='.$row['appID'].'"" class="hrefBtn">delete</a>';
+                $actions='<a href="./devApps.php?action=publish&id='.$row['appID'].'"" id="hrefBtn">publish</a>';
+                $actions .='<a href="" id="hrefBtn">edit</a>';
+                $actions .='<a href="./devApps.php?action=delete&id='.$row['appID'].'"" id="hrefBtn">delete</a>';
                 break;
                 case 2 :
                 $state="reported";
-                $actions ='<a href="" class="hrefBtn">edit</a>';
-                $actions .='<a href="./devApps.php?action=delete&id='.$row['appID'].'"" class="hrefBtn">delete</a>';
+                $actions ='<a href="" id="hrefBtn">edit</a>';
+                $actions .='<a href="./devApps.php?action=delete&id='.$row['appID'].'"" id="hrefBtn">delete</a>';
                 break;
              }
              echo "<td>$state</td><td>$actions</td></tr>";

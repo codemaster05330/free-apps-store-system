@@ -5,7 +5,9 @@ include_once('devApps.functions.php');
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Admin Dashboard</title>
+    <title>apps list</title>
+    <link rel="stylesheet" href="../styles/mainStyle.css" type="text/css"/>
+    <link rel="stylesheet" href="../styles/dashboard.css" type="text/css"/>
 </head>
 
 <body>
@@ -66,7 +68,7 @@ else
 </div>
 
 </div>
-<div id="footer">
+<div id="footerBar">
 <?php
 include_once('./layout/devFooter.php');
 ?>
