@@ -51,7 +51,7 @@ include_once('../includes/common.functions.php');
     {
         $level="Normal User";
     }
-    echo '<form action="user.php?action=updateLevel&id='.$id.'" method="post">
+    echo '<form action="user.php?action=updateLevel&id='.$id.'" method="post" id="editForm">
 <label>Current Privilege : <strong>'.$level.'</strong></label> <br />
 <label>New Privilege :</label><select name="level">
 <option value="0">Admin</option>
