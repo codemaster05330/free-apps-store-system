@@ -56,9 +56,9 @@ if(isset($_GET['action']))
             exit();
         break;
         case "pending":
-        $sql='select apps.appID ,apps.appName ,apps.appShortDesc ,apps.appMainCatID,apps.appSubCatID,apps.approvedBy,
+        $sql='select apps.appID ,apps.appName ,apps.appShortDesc ,apps.appMainCatID,apps.appSubCatID,apps.appState,
         developers.developerName ,categories.catName from apps,developers,categories where 
-        apps.developerID=developers.developerID and apps.appMainCatID=categories.catID AND apps.approvedBy IS NULL' ;
+        apps.developerID=developers.developerID and apps.appMainCatID=categories.catID AND apps.appState=0' ;
         $result=mysql_query($sql) or die("query failed due to ".mysql_error());
         if(mysql_num_rows($result)==0)
         {
@@ -73,7 +73,7 @@ if(isset($_GET['action']))
 }
 else
 {
- $sql='select apps.appID ,apps.appName ,apps.appShortDesc ,apps.appMainCatID,apps.appSubCatID,apps.approvedBy,
+ $sql='select apps.appID ,apps.appName ,apps.appShortDesc ,apps.appMainCatID,apps.appSubCatID,apps.appState,
         developers.developerName ,categories.catName from apps,developers,categories where 
         apps.developerID=developers.developerID and apps.appMainCatID=categories.catID';
         $result=mysql_query($sql) or die("query failed due to ".mysql_error());
