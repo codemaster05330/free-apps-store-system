@@ -83,7 +83,7 @@ include_once('../includes/common.functions.php');
                 case 1 :
                 $state="published";
                 $actions='<a href="./devApps.php?action=unpublish&id='.$row['appID'].'"" id="hrefBtn">unpublish</a>';
-                $actions .='<a href="" id="hrefBtn">edit</a>';
+                $actions .='<a href="./editApp.php?appID='.$row['appID'].'" id="hrefBtn">edit</a>';
                 $actions .='<a href="./devApps.php?action=delete&id='.$row['appID'].'"" id="hrefBtn">delete</a>';
                 $actions .='<a href="devReviews.php?appID='.$row['appID'].'" id="hrefBtn">reviews</a>';
                 break;
