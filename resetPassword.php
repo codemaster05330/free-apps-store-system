@@ -63,6 +63,37 @@ if(isset($_POST['sendLink']))
 elseif(isset($_GET['x']) && isset($_GET['y']))
 {
     //show reset form 
+    $sql ="SELECT userKey,userState FROM users WHERE userID={$_GET['x']} ";
+    $result=mysql_query($sql)or die("query failed ".mysql_error());
+    if(mysql_num_rows($result)==1)
+    {
+       
+         $row=mysql_fetch_assoc($result);
+         $key=$row['userKey'];
+         $state=$row['userState'];
+         if($key==$_GET['y'])
+         { 
+            echo '</td></tr>
+         <tr><td><input type="hidden" name="id" value="'.$_GET['x'].'" /></td></tr>   
+        <tr><td><input type="password" name="password1" required placeholder="type your new password " /></td></tr>
+        <tr><td><input type="password" name="password2" required  placeholder="type your new password again "/></td></tr>
+        <tr><td><input type="submit" name="reset" value="submit" id="hrefBtn" /></td></tr>';
+            
+         }
+         else
+         {
+          logError("unknown reset link");
+          header("location:./resetPassword.php");
+          exit();  
+         }
+    }
+    else
+    {
+        logError("unknown reset link");
+         header("location:./resetPassword.php");
+        exit();
+    }
+    
     
 }
 elseif(isset($_POST['reset']))
