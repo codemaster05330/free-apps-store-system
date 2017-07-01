@@ -18,17 +18,21 @@ include_once('./layout/searchPanel.php');
 </div>
 <div id="wrapper">
 <div id="loginContent">
-<form id="loginForm">
+<form id="loginForm" method="post" action="">
 <p id="error">
 <?php
 printError();
 ?> 
 </p>
-<input type="email" name="userEmail" placeholder="type your email "  required /><br/>
-<input type="password" name="password" placeholder="type your password "  required /><br/>
-<input type="checkbox" name="remember"/> <label>remember me </label><br/>
-<input type="submit" name="login" value="sign in" />
-<input type="button" name="login" value="sign up"/>
+<table>
+<tr><td><input type="email" name="userEmail" placeholder="type your email "  required /></td></tr>
+<tr><td><input type="password" name="password" placeholder="type your password "  required /></td></tr>
+<tr><td><input type="checkbox" name="remember"/> remember me</td></tr>
+<tr><td><a href="resetPassword.php">forgot password</a></td></tr>
+<tr><td><input type="submit" name="login" value="sign in" id="hrefBtn" />
+<input type="button" name="logout" value="sign up" id="hrefBtn" /></td></tr>
+
+</table>
 </form>
 </div>
 </div>
