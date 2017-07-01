@@ -1,5 +1,5 @@
 <?php
-include_once('./common.functions.php');
+//include_once('./common.functions.php');
 
 
 /**
@@ -45,4 +45,15 @@ include_once('./common.functions.php');
     }
     
  }
+ 
+ /**
+   * log out 
+   * */
+   function logout()
+   {
+     if(isset($_SESSION['athorized']))
+    {
+        unset($_SESSION['athorized']);
+    }
+   }
 ?>
