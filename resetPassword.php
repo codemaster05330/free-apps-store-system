@@ -27,7 +27,7 @@ include_once('./layout/searchPanel.php');
 </div>
 <div id="wrapper">
 <div id="loginContent">
-<form id="loginForm" method="post" action="">
+<form id="loginForm" method="post" action="./resetPassword.php">
 <table>
 <tr><td id="error">
 <?php
@@ -99,6 +99,18 @@ elseif(isset($_GET['x']) && isset($_GET['y']))
 elseif(isset($_POST['reset']))
 {
     //update new password
+     $password1=mysql_real_escape_string($_POST['password1']);
+    $password2=mysql_real_escape_string($_POST['password2']);
+    $id=$_POST['id'];
+    if($password1 == $password2)
+    {
+        $password=md5($password1);
+         $sql="UPDATE users SET userKey='NULL',userState=1,userPassword='$password' WHERE userID=$id ";
+         $result=mysql_query($sql)or die("query failed ".mysql_error());
+         logSuccess("your password has been reseted successfully");
+          header("location:./login.php");
+                exit();   
+    }
     
 }
 else
