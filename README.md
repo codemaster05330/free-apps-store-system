@@ -1,15 +1,15 @@
-it is database management application for free apps store 
+It is database management application for free apps store 
 Technologies used: PHP and MySQL.
 
 demo
 ====
 
-[demo](https://) 
+[demo](https://)
 
 * demo credentials 
 	* admin :   admin@domain.com , admin
-	* develper: dev1@domain.com , develper1
-	* develper: dev2@domain.com , develper2
+	* developer: dev1@domain.com , develper1
+	* developer: dev2@domain.com , develper2
 	* normal user: user@domain.com , user
 	
 system details
@@ -18,32 +18,52 @@ system details
 * it has three kinds of users 
 	* guset[unregistered] 
 	* normal user[registered user]	
-	* develper[registered develper]	
+	* developer[registered developer]	
 	* admin[admin privilege user]
 
 * guset privileges
+	* browse website apps ,developers 
+	* search for specific app name
+	* sign up 
 	* download apps
-	* report broken links
 
 * normal user privileges
 	* guset privileges
 	* review apps
 	* manage thier accounts
 
-* develper privileges
+* developer privileges
 	* guset privileges
 	* add new app 
 	* update their apps
 	* delete their apps
 	* manage their accounts
+	* view thier apps related reviews 
 	
 * admin privileges
-	* manage users [add,edit,delete]
-	* review [apps(new/updates) ,develpers accounts(new/updates),apps users reviews]
+	* manage users [change privilege,delete]
+	* approve or unapprove  [apps(new/updates) ,developers accounts(new/updates),apps users reviews]
 	* manage system divisions (categories,platforms)[add ,edit ,delete]
 	* misc
 
 
+code notes
+==========
+		*all form inputs are straightforward ,no validation script till now
+		
+		
+		
+
+future list
+============
+			*reveiew and rating system for apps 
+			*optimize search based on apps keywords rather than apps names
+			*ability to report apps ,and broken links 
+			*show related or similar apps list 
+			*social sign up and login 
+			*apps ads
+			*provide statistics system for admin ,developer
+			
 how to use it 
 =============
 	1- download images from [here](https://)
@@ -52,7 +72,7 @@ how to use it
 	4- edit dbsetup.php to choose admin credentials defaults are
 		login mail: admin@domain.com ,password : admin
 	4- run dbsetup.php file to setup system tables
-	5- note that system will be empty ,you need to create develper account and add apps to it
+	5- note that system will be empty ,you need to create developer account and add apps to it
 	
 	
 finally
