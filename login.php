@@ -32,6 +32,7 @@ include_once('./layout/searchPanel.php');
 <tr><td id="error">
 <?php
 printError();
+printSuccess();
 ?>
 </td></tr>
 <tr><td><input type="email" name="userEmail" placeholder="type your email "  required /></td></tr>
