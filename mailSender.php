@@ -25,7 +25,7 @@ if(isset($_GET['action']) && isset($_GET['id']))
             $ret=mail($to,$subject,$body);
             if($ret==true)
             {
-                header('location:./activate.php');
+                header("location:./activate.php?x=$id");
                 exit();
             }
             else
