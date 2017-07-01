@@ -1,5 +1,14 @@
 <?php
 include_once('./includes/common.functions.php');
+include_once('./includes/login.functions.php');
+
+if(isset($_POST['login']))
+{
+    $email=mysql_real_escape_string($_POST['userEmail']);
+    $password=mysql_real_escape_string($_POST['password']);
+    signin($email,$password);
+    
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -19,12 +28,12 @@ include_once('./layout/searchPanel.php');
 <div id="wrapper">
 <div id="loginContent">
 <form id="loginForm" method="post" action="">
-<p id="error">
+<table>
+<tr><td id="error">
 <?php
 printError();
-?> 
-</p>
-<table>
+?>
+</td></tr>
 <tr><td><input type="email" name="userEmail" placeholder="type your email "  required /></td></tr>
 <tr><td><input type="password" name="password" placeholder="type your password "  required /></td></tr>
 <tr><td><input type="checkbox" name="remember"/> remember me</td></tr>
