@@ -13,7 +13,7 @@ if(isset($_POST['login']))
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>download</title>
+    <title>login</title>
     <link rel="stylesheet" href="./styles/mainStyle.css" type="text/css"/>
 </head>
 
@@ -39,7 +39,7 @@ printError();
 <tr><td><input type="checkbox" name="remember"/> remember me</td></tr>
 <tr><td><a href="resetPassword.php">forgot password</a></td></tr>
 <tr><td><input type="submit" name="login" value="sign in" id="hrefBtn" />
-<input type="button" name="logout" value="sign up" id="hrefBtn" /></td></tr>
+<input type="button" value="sign up" id="hrefBtn"  onclick="location.href='./signup.php'"/></td></tr>
 
 </table>
 </form>
