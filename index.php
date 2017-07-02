@@ -1,5 +1,6 @@
 <?php
 include_once('./includes/common.functions.php');
+include_once('./includes/login.functions.php');
 ?>
 <!DOCTYPE HTML>
 <html>

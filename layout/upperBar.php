@@ -2,7 +2,7 @@
 <a href="./index.php"><h2>Free Apps Store</h2></a>
 <div id="rightPanel">
 <?php
-include_once('./includes/login.functions.php');
+//include_once('./includes/login.functions.php');
 if(isset($_GET['logout']))
 {
     logout();
