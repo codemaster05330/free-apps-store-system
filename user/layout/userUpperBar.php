@@ -1,4 +1,5 @@
 <?php
+$Dir="../";
 if(!isSignedIn())
 {
     header("location:../index.php");
