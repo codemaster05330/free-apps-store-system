@@ -4,6 +4,32 @@ $id=$_SESSION['userID'];
 if(isset($_POST['updateLogo']))
 {
     
+    $logo=$_FILES['logo']['tmp_name'];
+    if($logo != "")
+    {
+         $logo=addslashes($logo);
+         $logo=file_get_contents($logo);
+         $logo=base64_encode($logo);
+         $sql="UPDATE users SET userImg='$logo' WHERE userID=$id ";
+         $result=mysql_query($sql);
+         if($result==true)
+         {
+            logSuccess("image updated successfully");
+         }
+         else
+         {
+            logError("something went wrong");
+         }
+         
+         
+    }
+    else
+    {
+        logError("select image first");
+    }
+    
+    header("location:./editInfo.php");
+    exit();
 }
 elseif(isset($_POST['updateNames']))
 {
