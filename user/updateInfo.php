@@ -59,6 +59,28 @@ elseif(isset($_POST['updateNames']))
 elseif(isset($_POST['updateEmail']))
 {
     
+    $email=$_POST['email'];
+    if($email !="")
+    {
+        $sql="UPDATE users SET userEmail='$email' WHERE userID=$id ";
+         $result=mysql_query($sql);
+         if($result==true)
+         {
+            logSuccess("email updated successfully");
+         }
+         else
+         {
+            logError("something went wrong");
+         }
+    }
+    else
+    {
+        logError("empty fields");
+    }
+    
+    header("location:./editInfo.php");
+    exit();
+    
 }
 elseif(isset($_POST['updatePass']))
 {
