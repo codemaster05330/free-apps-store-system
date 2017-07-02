@@ -84,6 +84,30 @@ elseif(isset($_POST['updateEmail']))
 }
 elseif(isset($_POST['updatePass']))
 {
+    $password1=$_POST['password1'];
+    $password2=$_POST['password2'];
+    if($password1==$password2 && $password1!="")
+    {
+        $password=md5($password1);
+        $sql="UPDATE users SET userPassword='$password' WHERE userID=$id ";
+         $result=mysql_query($sql);
+         if($result==true)
+         {
+            logSuccess("password updated successfully");
+         }
+         else
+         {
+            logError("something went wrong");
+         }
+    }
+    else
+    {
+        logError("empty or um matched fields");
+    }
+    
+    header("location:./editInfo.php");
+    exit();
+
     
 }
 else
@@ -114,8 +138,8 @@ $sql="SELECT * FROM users WHERE userID=$id";
     echo '<tr><td>Email :<input type="text" name="email" value="'.$row['userEmail'].'" />
             <input  type="submit" name="updateEmail" value="update"/></td></tr>';
             
-    echo '<tr><td>new Password :<input type="password" name="pass1" placeholder="type your new password "  />
-           new Password again :<input type="password" name="pass2" placeholder="type your new password again " />
+    echo '<tr><td>new Password :<input type="password" name="password1" placeholder="type your new password "  />
+           new Password again :<input type="password" name="password2" placeholder="type your new password again " />
             <input  type="submit" name="updatePass" value="update"/></td></tr>';
                     
     echo '</table></form>' ;    
