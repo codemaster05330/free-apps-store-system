@@ -33,7 +33,28 @@ if(isset($_POST['updateLogo']))
 }
 elseif(isset($_POST['updateNames']))
 {
+    $firstName=$_POST['fName'];
+    $lastName=$_POST['lName'];
+    if($firstName !="" && $lastName !="")
+    {
+        $sql="UPDATE users SET userFirstName='$firstName' ,userLastName='$lastName' WHERE userID=$id ";
+         $result=mysql_query($sql);
+         if($result==true)
+         {
+            logSuccess("Names updated successfully");
+         }
+         else
+         {
+            logError("something went wrong");
+         }
+    }
+    else
+    {
+        logError("empty fields");
+    }
     
+    header("location:./editInfo.php");
+    exit();
 }
 elseif(isset($_POST['updateEmail']))
 {
