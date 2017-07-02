@@ -27,7 +27,7 @@ if(isset($_POST['signup']))
         $key=md5(uniqid(rand(),true));
         
         $sql ="INSERT INTO users (userEmail,userPassword,userFirstName,userLastName,userLevel,joinDate,userKey,userState) VALUES
-                ('$email','$password1','$firstName','$lastName',3,NOW(),'$key',0)";
+                ('$email','$password1','$firstName','$lastName',2,NOW(),'$key',0)";
         $result=mysql_query($sql)or die("query failed ".mysql_error());
         logSuccess("account created succeffuly");
         $id=mysql_insert_id();
