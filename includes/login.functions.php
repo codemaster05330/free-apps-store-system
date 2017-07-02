@@ -31,6 +31,7 @@
         {
         $_SESSION['athorized']=true;
         $_SESSION['userID']=$row['userID'];
+        $_SESSION['devID']=$row['relatedID'];
         $_SESSION['userLevel']=$row['userLevel'];
         $_SESSION['firstName']=$row['userFirstName'];
         $_SESSION['lastName']=$row['userLastName'];
@@ -53,7 +54,8 @@
    {
      if(isset($_SESSION['athorized']))
     {
-        unset($_SESSION['athorized']);
+        session_destroy();
+        //unset($_SESSION['athorized']);
     }
    }
    
