@@ -1,0 +1,160 @@
+
+#navigationBar
+{
+    float:left;
+    width: 10%;
+    margin-right: 10px;
+}
+#content
+{
+     float:left;
+     width: 85%;
+     margin:20px;
+}
+
+#adminMenu
+{
+   background: #333;
+    color: white;
+    text-align:left;
+    padding: 10px;
+}
+
+#adminMenu li
+{
+    padding: 10px;
+    padding-left: 0;
+    padding-bottom: 2px;
+}
+#content div
+{
+    border:1px solid black;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#content h4
+{
+    margin: 8px;
+}
+#appLogo
+{
+    width:40%;
+    text-align: left;
+    
+}
+#smallIcon
+{
+    width:30%;
+    height:30%;
+    margin:10px;
+    border:1px solid black;
+    float: left;
+    margin: 0 5px 5px 0;
+    vertical-align: text-bottom;
+}
+
+#newApp
+{
+ padding: 20px;  
+ border:1px solid black;
+ border-radius: 5px; 
+ margin: 10px;
+}
+fieldset
+{
+    padding:20px;
+    margin: 10px;
+}
+legend
+{
+    padding: 5px;
+     border:1px solid black;
+     font-weight: bold;
+}
+.appsList
+{
+    width:100%;
+    margin: 20px;
+    
+}
+
+table
+{
+    width: 100%;
+   
+}
+td
+{
+    padding: 10px;
+}
+
+#appName
+{
+    
+ font-weight: bold;   
+}
+#appIcon
+{
+    width: 50px;
+    height: 50px;
+    border:1px solid black;
+    margin:10px;
+    border-radius: 5px;
+}
+
+#editForm
+{
+    padding: 20px;
+     border:1px solid black;
+}
+#editForm input
+{
+    margin: 10px;
+    margin-left: 0;
+}
+#userInfo
+{
+    text-align: left;
+    font-size: 20px;
+    padding-bottom: 150px;
+    border:1px solid black;
+}
+#userInfo img
+{
+    width: 180px;
+    height: 200px;
+    float: left;
+     border:1px solid black;
+    margin:10px;
+    border-radius: 5px;
+    
+}
+#editInfo
+{
+    text-align: left;
+    font-size: 14px;
+    padding-bottom: 350px;
+    border:1px solid black;
+    vertical-align: middle;
+}
+#editInfo img
+{
+    width: 100px;
+    height: 120px;
+    float: left;
+     border:1px solid black;
+    margin:10px;
+    border-radius: 5px;
+}
+
+#editInfo td
+{
+    padding: 20px;
+}
+#devForm
+{
+    text-align: left;
+    width: auto;
+}

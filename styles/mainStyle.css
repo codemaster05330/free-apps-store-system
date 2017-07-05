@@ -1,0 +1,293 @@
+body
+{
+    width: 100%;
+    margin: 0;
+    padding:0;
+    background: #fff;    
+}
+#upperBar
+{
+    background: #333;
+    color: white;
+    width: 100%;
+    margin: 0;
+    padding:10px;   
+}
+#rightPanel
+{
+    float: right;
+    display: inline;
+    padding-right: 20px;
+}
+#upperBar h2,#upperBar a
+{
+    display: inline;
+    text-decoration: none;
+    color: white;
+}
+h4
+{
+    margin: 0;
+    padding: 0;
+}
+#searchBar
+{
+    color: white;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 10px;  
+    text-align: center;
+    padding: 20px;
+    background: #676767;
+}
+#wrapper
+{
+    margin:auto;
+    width:98%;
+    margin-top: 10px;
+    
+}
+#sideBars
+{
+    
+    width:13%;
+     margin:0;
+     float:right;
+    /* border:2px solid black;*/
+    padding:5px;
+}
+
+#topDownloadsList,#recentAppsList
+{
+    width:100%;
+     margin: 0;
+     margin-bottom: 20px;
+}
+
+#content
+{
+    display:inline-block;
+    width: 85%;
+    margin:0;
+     
+}
+#leftSideBar
+{
+    
+    width:10%;
+     margin: 0;
+     margin-right:5px;
+    float:left;
+   /* border:2px solid black;*/
+    padding:10px;
+    
+}
+#appsProvider
+{
+    float:left;
+    width: 81%;
+    margin: 0;
+    border:2px solid black;
+    padding:15px;
+}
+
+
+#pages
+{
+    text-align: center;
+}
+#hrefBtn
+{
+    text-decoration: none;
+    background: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 2px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+#hrefBtn:hover
+{
+     background: #676767;
+}
+table a
+{
+    text-decoration: none;
+    
+}
+table th
+{
+    
+	background-color: #676767;
+	color: #F0F0F0;
+    text-align: center;
+
+}
+strong {
+    font-weight: bold; 
+}
+
+#smallApp
+{
+    border:1px solid black;
+    width: 98%;
+    margin:5px auto;
+    background: #ddd; 
+    text-align: left;
+    vertical-align: top;
+    
+    
+}
+td 
+{
+ vertical-align: top;
+ padding:0; 
+}
+#barApp
+{
+    border:1px solid black;
+    width: 98%;
+    margin:1px auto;
+    background: #ddd; 
+    font-size: 12px;
+    vertical-align: top;
+    text-align: left;
+}
+#barApp img
+{
+    
+    width:90%;
+    height:90%;
+    padding:0;
+    margin-left:3%;
+    border:1px solid white;
+}
+small
+{
+    font-weight: lighter;
+    font-style: oblique;
+}
+#barApp p
+{
+    padding:0;
+    margin: 0;
+}
+#appLogo
+{
+    width:20%;
+}
+
+#mediumIcon
+{
+    width:80%;
+    height:80%;
+    margin:10px;
+    border:1px solid white;
+}
+
+#footerBar
+{
+    width:100%;
+    margin: 0;
+    margin-top: 50px;
+    text-align: center;
+    padding: 10px;
+    background: #333;
+    color: white;
+    clear:both   
+}
+
+#miniApp
+{
+    margin-top: 50px;
+    margin-left: 50px;
+    width: 50%;
+}
+
+#miniApp img
+{
+    
+    border:2px solid black;
+    border-radius: 5px;
+    font-size: 25px;
+    
+}
+#miniApp td:first-child
+{
+    width: 20%;
+}
+
+#downloadLinks td
+{
+    padding-top: 50px;
+    
+}
+
+ul
+{
+    list-style: none;
+}
+table 
+{
+    text-align: center;
+}
+
+#loginForm
+{
+    width: 300px;
+     margin: 50px auto;
+    margin-bottom: 200px;
+    text-align: center;
+    border:1px solid black;
+    border-radius: 5px;
+    background: #ddd;
+    padding: 20px;
+}
+
+#loginForm table
+{
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+#loginForm td
+{
+    
+   width: 100%;
+    padding: 10px;
+
+}
+
+#loginForm input
+{
+    
+    padding: 10px;
+   
+}
+
+#error
+{
+    color: blue;
+    font-weight: bold;
+    text-align: center;
+}
+
+#loginContent
+{   
+    width: 90%;
+    height: 90%;
+    
+    margin: 0;
+}
+
+#uppernotice
+{
+    padding: 10px;
+    color: blue;
+    background: white;
+    width: 50%;
+    margin:0 auto 20px;
+    border-radius: 10px;
+    border: 2px solid blue;
+}

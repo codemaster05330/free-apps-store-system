@@ -1,0 +1,64 @@
+
+#appContent
+{
+    width:96%;
+    margin:0;
+    padding:20px;
+    border:1px solid black;
+}
+#appContent table
+{
+    background: #ddd;
+    padding:5px;
+    vertical-align: top;
+    text-align: left; 
+}
+
+
+#appContent p
+{
+    background: #ddd;
+    border:1px solid black;
+    
+}
+table
+{
+    width:100%;
+    border:1px solid black;
+    
+}
+#more td
+{
+    padding:10px;
+}
+#thumbnail td
+{
+    width: 30%;
+}
+#gallery
+{
+    width: 100%;
+}
+
+#thumbnail img
+{
+    width: 90%;
+    border:1px solid black;
+    border-radius: 5px;
+}
+
+#pro_vedio
+{
+    width: 70%;
+    margin: 10px auto;
+    border:1px solid black;
+    border-radius: 5px;
+}
+
+#pro_vedio iframe
+{
+    width: 100%;
+    height: 300px;
+    margin: 0;
+    padding: 0;
+}
