@@ -4,6 +4,26 @@ include_once('./includes/login.functions.php');
 
 if(isset($_POST['login']))
 {
+    if(isset($_POST['remember']))
+    {
+        setcookie("userEmail",$_POST['userEmail'],time()+ (10 * 365 * 24 * 60 * 60));
+        setcookie('userPassword',$_POST['password'],time()+ (10 * 365 * 24 * 60 * 60));
+    }
+    else
+    {
+        
+        $past=time()-100;
+        if(isset($_COOKIE['userEmail']))
+        {
+            setcookie("userEmail","",$past);
+        } 
+        if(isset($_COOKIE['userPassword']))
+        {
+            setcookie('userPassword',"",$past);
+        }
+        
+        
+    }
     $email=mysql_real_escape_string($_POST['userEmail']);
     $password=mysql_real_escape_string($_POST['password']);
     signin($email,$password);
@@ -35,9 +55,9 @@ printError();
 printSuccess();
 ?>
 </td></tr>
-<tr><td><input type="email" name="userEmail" placeholder="type your email "  required /></td></tr>
-<tr><td><input type="password" name="password" placeholder="type your password "  required /></td></tr>
-<tr><td><input type="checkbox" name="remember"/> remember me</td></tr>
+<tr><td><input type="email" name="userEmail" placeholder="type your email " <?php  if(isset($_COOKIE['userEmail'])){echo 'value="'.$_COOKIE['userEmail'].'"';}?> required /></td></tr>
+<tr><td><input type="password" name="password" placeholder="type your password " <?php  if(isset($_COOKIE['userPassword'])){echo 'value="'.$_COOKIE['userPassword'].'"';}?> required /></td></tr>
+<tr><td><input type="checkbox" name="remember" <?php  if(isset($_COOKIE['userEmail'])){echo 'checked ';}?>/> remember me</td></tr>
 <tr><td><a href="resetPassword.php">forgot password</a></td></tr>
 <tr><td><input type="submit" name="login" value="sign in" id="hrefBtn" />
 <input type="button" value="sign up" id="hrefBtn"  onclick="location.href='./signup.php'"/></td></tr>
