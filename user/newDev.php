@@ -1,6 +1,20 @@
 <?php
 include_once('../includes/common.functions.php');
 include_once('../includes/login.functions.php');
+if(isSignedIn())
+{
+    if($_SESSION['userLevel'] ==1)
+    {
+        logError("you already have developer account");
+        header('location:./index.php');
+        exit(); 
+    }
+}
+else
+{
+    header('location:./index.php');
+    exit();
+}
 ?>
 <!DOCTYPE HTML>
 <html>

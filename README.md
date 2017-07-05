@@ -30,7 +30,8 @@ system details
 * normal user privileges
 	* guset privileges
 	* review apps
-	* manage thier accounts
+	* manage thier accounts[update ,delete]
+	* create developer account
 
 * developer privileges
 	* guset privileges
@@ -49,7 +50,8 @@ system details
 
 code notes
 ==========
-		*all form inputs are straightforward ,no validation script till now
+		* all form inputs are straightforward ,no validation script till now
+        * projet focus mainly on php and mysql,so play with css styles as you want
 		
 		
 		
@@ -63,6 +65,7 @@ future list
 			*social sign up and login 
 			*apps ads
 			*provide statistics system for admin ,developer
+			*newsletters for new apps ,apps updates
 			
 how to use it 
 =============
