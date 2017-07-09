@@ -20,8 +20,10 @@ define('DBPASSWORD','');
 define('DBNAME','appstore');
 
 //connet to mysql database
-$conn=mysql_connect(DBHOSTNAME,DBUSERNAME,DBPASSWORD) or die('connection to database failed due to '.mysql_error());
+//$conn=mysql_connect(DBHOSTNAME,DBUSERNAME,DBPASSWORD) or die('connection to database failed due to '.mysql_error());
 //select required database
-$conn=mysql_select_db(DBNAME)or die('selecting database failed due to '.mysql_error());
+//$conn=mysql_select_db(DBNAME)or die('selecting database failed due to '.mysql_error());
+
+$mysqli =new mysqli(DBHOSTNAME,DBUSERNAME,DBPASSWORD,DBNAME);
 
 ?>

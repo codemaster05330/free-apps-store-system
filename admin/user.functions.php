@@ -16,8 +16,9 @@ include_once('../includes/common.functions.php');
  */
  function delUser($id)
  {
+    global $mysqli;
     $sql="DELETE FROM users WHERE userID=$id ";
-    mysql_query($sql) or die("query failed due to ".mysql_error());
+    $mysqli->query($sql)or die("query failed due to ".mysqli_error());
     logSuccess("user deleted successfully");
  }
  
@@ -27,9 +28,11 @@ include_once('../includes/common.functions.php');
   */
   function privilegeForm($id)
   {
+    global $mysqli;
+    
     $sql="SELECT * FROM users WHERE userID=$id";
-    $result=mysql_query($sql) or die("query failed due to ".mysql_error());
-    if(mysql_num_rows($result)==0)//redirect if unknown id 
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+    if($result->num_rows==0)//redirect if unknown id 
     {
         logError("unkown user id");
         header("location:./user.php");
@@ -37,7 +40,7 @@ include_once('../includes/common.functions.php');
     }
      else
     {//load user content to be edited
-    $row=mysql_fetch_assoc($result);
+    $row=$result->fetch_assoc();
     $level=$row['userLevel'];
     if($level==0)
     {
@@ -70,8 +73,9 @@ include_once('../includes/common.functions.php');
    */
    function updatePrivilege($id,$level)
    {
+    global $mysqli;
     $sql="UPDATE users SET userLevel=$level WHERE userID=$id ";  
-    mysql_query($sql) or die("query failed due to ".mysql_error());
+    $mysqli->query($sql)or die("query failed due to ".mysqli_error());
     logSuccess("user privilege updated successfully");
    }
    
@@ -81,10 +85,10 @@ include_once('../includes/common.functions.php');
     */
     function  displayUsers($result)
     {
-        
+        global $mysqli;   
         echo '<table><tr><th>N</th><th>Name</th><th>Email</th> <th>Privilege</th> <th>Join Date</th><th>Last Login</th><th>actions</th></tr>';
        $count=1;
-        while($row=mysql_fetch_assoc($result))
+        while($row=$result->fetch_assoc())
         {
             echo '<tr><td>'.$count.'</td>';
             $count++;

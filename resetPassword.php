@@ -4,8 +4,8 @@ include_once('./includes/login.functions.php');
 
 if(isset($_POST['login']))
 {
-    $email=mysql_real_escape_string($_POST['userEmail']);
-    $password=mysql_real_escape_string($_POST['password']);
+    $email=mysqli_real_escape_string($mysqli,$_POST['userEmail']);
+    $password=mysqli_real_escape_string$mysqli($mysqli,$_POST['password']);
     signin($email,$password);
     
 }
@@ -38,15 +38,15 @@ if(isset($_POST['sendLink']))
     //send reset link to user
     $email=$_POST['userEmail'];
     $sql="SELECT * FROM users WHERE userEmail='$email'";
-    $result=mysql_query($sql)or die("query failed ".mysql_error());
-    if(mysql_num_rows($result)==1)
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+    if($result->num_rows==1)
     {
         $key=md5(uniqid(rand(),true));
-        $row=mysql_fetch_assoc($result);
+        $row=$result->fetch_assoc();
         $id=$row['userID'];
         
         $sql="UPDATE users SET userKey='$key' WHERE userID=$id ";
-        $result=mysql_query($sql)or die("query failed ".mysql_error());
+        $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
             
         header("location:./mailSender.php?action=reset&id=$id");
         exit();
@@ -64,11 +64,11 @@ elseif(isset($_GET['x']) && isset($_GET['y']))
 {
     //show reset form 
     $sql ="SELECT userKey,userState FROM users WHERE userID={$_GET['x']} ";
-    $result=mysql_query($sql)or die("query failed ".mysql_error());
-    if(mysql_num_rows($result)==1)
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+    if($result->num_rows==1)
     {
        
-         $row=mysql_fetch_assoc($result);
+         $row=$result->fetch_assoc();
          $key=$row['userKey'];
          $state=$row['userState'];
          if($key==$_GET['y'])
@@ -99,14 +99,14 @@ elseif(isset($_GET['x']) && isset($_GET['y']))
 elseif(isset($_POST['reset']))
 {
     //update new password
-     $password1=mysql_real_escape_string($_POST['password1']);
-    $password2=mysql_real_escape_string($_POST['password2']);
+     $password1=mysqli_real_escape_string($mysqli,$_POST['password1']);
+    $password2=mysqli_real_escape_string($mysqli,$_POST['password2']);
     $id=$_POST['id'];
     if($password1 == $password2)
     {
         $password=md5($password1);
          $sql="UPDATE users SET userKey='NULL',userState=1,userPassword='$password' WHERE userID=$id ";
-         $result=mysql_query($sql)or die("query failed ".mysql_error());
+         $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
          logSuccess("your password has been reseted successfully");
           header("location:./login.php");
                 exit();   

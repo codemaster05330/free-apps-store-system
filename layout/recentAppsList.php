@@ -3,8 +3,8 @@
 //include_once('../includes/common.functions.php');
 echo '<table><tr><th>Recent Apps</th></tr>';
 $sql="SELECT appID,appName,appIcon,appShortDesc,appVersion,approvalDate FROM apps WHERE appState=1 ORDER BY  approvalDate  DESC LIMIT 2";
-$result=mysql_query($sql) or die("query failed due to ".mysql_error());
-while($row=mysql_fetch_assoc($result))
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+while($row=$result->fetch_assoc())
 {
  echo '<tr><td>';
     echo '<table id="barApp"><tr><td rowspan="2" id="appLogo"><img id="mediumIcon" src="data:image;base64,'.$row['appIcon'].'"></td>';

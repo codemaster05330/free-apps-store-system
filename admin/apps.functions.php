@@ -16,9 +16,11 @@ include_once('../includes/common.functions.php');
  */
  function approveApp($id,$revId)
  {
-    $sql="UPDATE apps SET approvedBy=$revId,approvalDate= NOW() WHERE appID=$id ";  
-          mysql_query($sql) or die("query failed due to ".mysql_error());
-          logSuccess("app approved successfully");
+    global $mysqli;
+      $sql="UPDATE apps SET approvedBy=$revId,approvalDate= NOW() WHERE appID=$id ";  
+         // mysql_query($sql) or die("query failed due to ".mysql_error());
+         $mysqli->query($sql)or die("query failed due to ".mysqli_error());
+         logSuccess("app approved successfully");
  }
 
 /**
@@ -27,8 +29,10 @@ include_once('../includes/common.functions.php');
   */
   function unapproveApp($id)
  {
+    global $mysqli;
     $sql="UPDATE apps SET approvedBy=NULL WHERE appID=$id ";  
-          mysql_query($sql) or die("query failed due to ".mysql_error());
+         // mysql_query($sql) or die("query failed due to ".mysql_error());
+          $mysqli->query($sql)or die("query failed due to ".mysqli_error());
           logSuccess("app unapproved successfully");
  }
  
@@ -38,8 +42,10 @@ include_once('../includes/common.functions.php');
   */
   function delApp($id)
   {
+    global $mysqli;
     $sql="DELETE FROM apps WHERE appID=$id ";
-    mysql_query($sql) or die("query failed due to ".mysql_error());
+    //mysql_query($sql) or die("query failed due to ".mysql_error());
+     $mysqli->query($sql)or die("query failed due to ".mysqli_error());
     logSuccess("app deleted successfully");
   }
  
@@ -49,9 +55,10 @@ include_once('../includes/common.functions.php');
   */
   function displayApps($result)
   {
+    global $mysqli;
     echo '<table><tr><th>N</th><th>App</th><th>short description</th><th>App Category</th><th>Author</th>  <th>actions</th></tr>';
        $count=1;
-        while($row=mysql_fetch_assoc($result))
+        while($row=$result->fetch_assoc())
         {
             if($row['appState']==0)
             {
@@ -74,8 +81,8 @@ include_once('../includes/common.functions.php');
             if($row['appSubCatID']!=NULL)
             {
                 $sql="SELECT * FROM categories WHERE catID={$row['appSubCatID']}";
-            $result2=mysql_query($sql) or die("query failed due to ".mysql_error());
-             $row2=mysql_fetch_assoc($result2);
+            $result2=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+             $row2=$result2->fetch_assoc();
              $mainCat=$row2['catName'];
              
               $subCat=' >> '.$row['catName'];

@@ -72,9 +72,9 @@ if(isset($_POST['newDev']))
  $devCounry=$_POST['devCountry'];
  $devCode=$_POST['devCode'];
  $sql="SELECT * FROM developers WHERE developerName='$devName'";
-    $result=mysql_query($sql)or die("query failed ".mysql_error());
-    $row=mysql_fetch_assoc($result);
-    if(mysql_num_rows($result)==1 && $row['developerID']!=$devID)
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+    $row=$result->fetch_assoc();
+    if($result->num_rows==1 && $row['developerID']!=$devID)
     {
         
           logError("already registered Name.");  
@@ -88,7 +88,7 @@ if(isset($_POST['newDev']))
         country='$devCounry',city='$devCity',state='$devState',zipcode=$devCode,
         Address1='$devAddress1',Address2='$devAddress2',developerState=0 $logo WHERE developerID=$devID"; 
         
-        $result=mysql_query($sql);
+        $result=$mysqli->query($sql);
          if($result==true)
          {
             logSuccess("deveoper updated successfully ,it need approval to start publish ");

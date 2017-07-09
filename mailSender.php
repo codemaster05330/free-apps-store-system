@@ -8,10 +8,10 @@ if(isset($_GET['action']) && isset($_GET['id']))
     if($_GET['action']=='activate')
     {
         $sql="SELECT userID,userEmail,userKey FROM users WHERE userID=$id ";
-        $result=mysql_query($sql)or die("query failed ".mysql_error());
-         if(mysql_num_rows($result)==1)
+        $result=$mysqli->query($sql)or die("query failed due to ".$mysqli->error);
+         if($result->num_rows==1)
          {
-           $row=mysql_fetch_assoc($result);
+           $row=$result->fetch_assoc();
            $email=$row['userEmail'];
            $key=$row['userKey'];
            
@@ -22,7 +22,10 @@ if(isset($_GET['action']) && isset($_GET['id']))
 			<p>your activation key is : $key</p>
             <p>Regards Site Admin</p>"; 
             
-            $ret=mail($to,$subject,$body);
+            $headers  = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+            
+            $ret=mail($to,$subject,$body,$headers);
             if($ret==true)
             {
                 header("location:./activate.php?x=$id");
@@ -37,10 +40,10 @@ if(isset($_GET['action']) && isset($_GET['id']))
     elseif($_GET['action']=='reset')
     {
          $sql="SELECT userID,userEmail,userKey FROM users WHERE userID=$id ";
-        $result=mysql_query($sql)or die("query failed ".mysql_error());
-         if(mysql_num_rows($result)==1)
+        $result=$mysqli->query($sql)or die("query failed due to ".$mysqli->error);
+         if($result->num_rows==1)
          {
-           $row=mysql_fetch_assoc($result);
+           $row=$result->fetch_assoc();
            $email=$row['userEmail'];
            $key=$row['userKey'];
            
@@ -51,7 +54,10 @@ if(isset($_GET['action']) && isset($_GET['id']))
 			<p>To reset your password, visit the following address: <a href=\"./resetPassword.php?x=$id&y=$key\">./resetPassword.php?x=$id&y=$key</a></p>
             <p>Regards Site Admin</p>"; 
             
-            $ret=mail($to,$subject,$body);
+            $headers  = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+            
+            $ret=mail($to,$subject,$body,$headers);
             if($ret==true)
             {
                 //echo "$body";

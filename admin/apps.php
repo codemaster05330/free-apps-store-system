@@ -60,8 +60,8 @@ if(isset($_GET['action']))
         $sql='select apps.appID ,apps.appName ,apps.appShortDesc ,apps.appMainCatID,apps.appSubCatID,apps.appState,
         developers.developerName ,categories.catName from apps,developers,categories where 
         apps.developerID=developers.developerID and apps.appMainCatID=categories.catID AND apps.appState=0' ;
-        $result=mysql_query($sql) or die("query failed due to ".mysql_error());
-        if(mysql_num_rows($result)==0)
+        $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+        if($result->num_rows==0)
         {
             echo "no apps pending requests";
         }
@@ -77,8 +77,8 @@ else
  $sql='select apps.appID ,apps.appName ,apps.appShortDesc ,apps.appMainCatID,apps.appSubCatID,apps.appState,
         developers.developerName ,categories.catName from apps,developers,categories where 
         apps.developerID=developers.developerID and apps.appMainCatID=categories.catID';
-        $result=mysql_query($sql) or die("query failed due to ".mysql_error());
-        if(mysql_num_rows($result)==0)
+        $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+        if($result->num_rows==0)
         {
             echo "no apps added yet";
         }

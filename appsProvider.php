@@ -11,8 +11,8 @@ sort by: <a href="?sort=appDownloads" id="hrefBtn">downloads</a>
 </p>
 <?php
 $sql="SELECT appID,appName,appIcon,appShortDesc,appVersion,appDownloads,appRating FROM apps WHERE appState=1 $appsFilter ORDER BY  $sort  DESC  LIMIT $offset,$APPSCOUNT";
-$result=mysql_query($sql) or die("query failed due to ".mysql_error());
-while($row=mysql_fetch_assoc($result))
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+while($row=$result->fetch_assoc())
 {
     echo '<table id="smallApp"><tr><td rowspan="2" id="appLogo"><img id="mediumIcon" src="data:image;base64,'.$row['appIcon'].'"></td>';
     echo '<td><a href="./app.php?appID='.$row['appID'].'"><h4>'.$row['appName'].' '.$row['appVersion'].'</h4></a>';
@@ -21,8 +21,8 @@ while($row=mysql_fetch_assoc($result))
     echo '</table>'; 
 }
 $sql="SELECT COUNT(*)FROM apps WHERE appState=1 $appsFilter";
-$result=mysql_query($sql)or die("query failed due to ".mysql_error());
-$row=mysql_fetch_assoc($result);
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+$row=$result->fetch_assoc();
 $totalRows=$row['COUNT(*)'];
 $pages=$totalRows/$APPSCOUNT;
 echo '<p id="pages">';

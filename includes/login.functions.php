@@ -10,18 +10,18 @@
  
  function signin($email,$password)
  {
-    $email=mysql_real_escape_string($email);
-    $password=mysql_real_escape_string($password);
+    //$email=mysqli_real_escape_string($email);
+   // $password=mysqli_real_escape_string($password);
     
     //calculate md5 hash for password
     $password=md5($password);
-    
+    global $mysqli;
     $sql="SELECT * FROM users WHERE userEmail ='$email' AND userPassword='$password'";
 
-    $result=mysql_query($sql)or die("query failed ".mysql_error());
-    if(mysql_num_rows($result)==1)
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+    if($result->num_rows==1)
     {
-         $row=mysql_fetch_assoc($result);
+         $row=$result->fetch_assoc();
          
         if($row['userState']==0)//unactivated account
         {

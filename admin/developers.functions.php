@@ -14,8 +14,9 @@ include_once('../includes/common.functions.php');
  */
  function approveDeveloper($id,$revId)
  {
+    global $mysqli;
     $sql="UPDATE developers SET approvedBy=$revId,approvalDate= NOW() WHERE developerID=$id ";  
-          mysql_query($sql) or die("query failed due to ".mysql_error());
+         $mysqli->query($sql)or die("query failed due to ".mysqli_error());
           logSuccess("developer approved successfully");
  }
  /**
@@ -24,8 +25,9 @@ include_once('../includes/common.functions.php');
   */
   function unapproveDeveloper($id)
  {
+    global $mysqli;
     $sql="UPDATE developers SET approvedBy=NULL WHERE developerID=$id ";  
-          mysql_query($sql) or die("query failed due to ".mysql_error());
+          $mysqli->query($sql)or die("query failed due to ".mysqli_error());
           logSuccess("developer unapproved successfully");
  }
 
@@ -35,8 +37,9 @@ include_once('../includes/common.functions.php');
   */
   function delDeveloper($id)
   {
+    global $mysqli;
     $sql="DELETE FROM developers WHERE developerID=$id ";
-    mysql_query($sql) or die("query failed due to ".mysql_error());
+   $mysqli->query($sql)or die("query failed due to ".mysqli_error());
     logSuccess("developer deleted successfully");
   }
   
@@ -47,9 +50,10 @@ include_once('../includes/common.functions.php');
   */
   function displayDevelopers($result)
   {
+    global $mysqli;
     echo '<table><tr><th>N</th><th>Name</th><th>Email</th> <th>Website</th> <th>Author</th><th>actions</th></tr>';
        $count=1;
-        while($row=mysql_fetch_assoc($result))
+        while($row=$result->fetch_assoc())
         {
             if($row['approvedBy']==NULL)
             {

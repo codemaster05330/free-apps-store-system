@@ -11,15 +11,15 @@
         $devID=$_GET['id'];
         
         $sql="SELECT * FROM developers WHERE developerID=$devID";
-    $result=mysql_query($sql) or die("query failed due to ".mysql_error());
-    if(mysql_num_rows($result)==0)
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+    if($result->num_rows==0)
     {
         header("location:./index.php");
         exit();
     }
     else
     {
-     $row=mysql_fetch_assoc($result);
+     $row=$result->fetch_assoc();
      
      echo '<p id="developerLogo">' ;
      if($row['develperLogo']=="")
@@ -44,9 +44,9 @@
      
      echo '<p id="devApps"><strong>Published Applications</strong><table>';
     $sql="SELECT appID,appName,appIcon,appShortDesc,appVersion FROM apps WHERE appState=1 AND developerID=$devID ORDER BY  appReleaseDate  DESC";
-    $result=mysql_query($sql) or die("query failed due to ".mysql_error());
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
     $count=1;
-    while($row=mysql_fetch_assoc($result))
+    while($row=$result->fetch_assoc())
     {
     echo "<tr><td>$count</td><td>";
     $count++;

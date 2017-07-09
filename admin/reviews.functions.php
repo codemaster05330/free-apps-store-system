@@ -15,8 +15,9 @@ include_once('../includes/common.functions.php');
  */
  function approveReview($id,$revId)
  {
+    global $mysqli;
     $sql="UPDATE reviews SET approvedBy=$revId,approvalDate= NOW() WHERE reviewID=$id ";  
-          mysql_query($sql) or die("query failed due to ".mysql_error());
+          $mysqli->query($sql)or die("query failed due to ".mysqli_error());
           logSuccess("review approved successfully");
  }
  
@@ -26,8 +27,9 @@ include_once('../includes/common.functions.php');
   */
   function unapproveReview($id)
  {
+    global $mysqli;
     $sql="UPDATE reviews SET approvedBy=NULL WHERE reviewID=$id ";  
-          mysql_query($sql) or die("query failed due to ".mysql_error());
+          $mysqli->query($sql)or die("query failed due to ".mysqli_error());
           logSuccess("review unapproved successfully");
  }
  
@@ -37,8 +39,9 @@ include_once('../includes/common.functions.php');
   */
   function delReview($id)
   {
+    global $mysqli;
     $sql="DELETE FROM reviews WHERE reviewID=$id ";
-    mysql_query($sql) or die("query failed due to ".mysql_error());
+   $mysqli->query($sql)or die("query failed due to ".mysqli_error());
     logSuccess("review deleted successfully");
   }
  
@@ -48,9 +51,10 @@ include_once('../includes/common.functions.php');
   */
   function displayReviews($result)
   {
+    global $mysqli;
     echo '<table><tr><th>N</th><th>Review</th><th>Author</th> <th>App Name</th> <th>Review Date</th><th>actions</th></tr>';
        $count=1;
-        while($row=mysql_fetch_assoc($result))
+        while($row=$result->fetch_assoc())
         {
             if($row['approvedBy']==NULL)
             {

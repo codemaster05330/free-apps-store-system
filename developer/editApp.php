@@ -142,7 +142,7 @@ if(isset($_POST['update'])&&isset($_POST['appID']))
     $updateSql .="appVideoLink='$vedioLink',appState=0,approvalMsg='update the app'";
     
     $sql ="UPDATE apps SET $updateSql WHERE appID={$_POST['appID']} AND developerID=$devID";
-     mysql_query($sql) or die("query failed due to ".mysql_error());
+     $mysqli->query($sql)or die("query failed due to ".mysqli_error());
      logSuccess($appName."app updated successfuly ");
      header("location:./devApps.php");
      exit();

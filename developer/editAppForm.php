@@ -10,8 +10,8 @@
         $appID=$_GET['appID'];
         $devID=1;
           $sql="SELECT * FROM apps WHERE appID=$appID AND developerID=$devID";
-    $result=mysql_query($sql) or die("query failed due to ".mysql_error());
-    if(mysql_num_rows($result)==0)
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+    if($result->num_rows==0)
     {
         logError("unkown app");
         header("location:./devApps.php");
@@ -19,7 +19,7 @@
     }
     else
     {
-     $row=mysql_fetch_assoc($result);
+     $row=$result->fetch_assoc();
     
     $appName=$row['appName'];
     $shortDesc=$row['appShortDesc'];
@@ -81,10 +81,10 @@
 <?php 
 include_once('../includes/dbconfig.php');
 $sql="SELECT * FROM platforms";
-$result=mysql_query($sql) or die("query failed due to ".mysql_error());
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
 echo '<p><label>Platform : </label><select required name="platform">';
 echo '<option value="0">select platform</option>' ;
-while($row=mysql_fetch_assoc($result))
+while($row=$result->fetch_assoc())
 {
     if($row['platformID']==$appPlatform)
     {
@@ -100,9 +100,9 @@ echo '</select></p>';
 
 echo '<p><label>Main Category : </label><select id="mainCat" name="mainCat" required>';
 $sql="SELECT * FROM categories Where catParent Is NULL";
-$result=mysql_query($sql) or die("query failed due to ".mysql_error());
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
 echo '<option value="0">select category</option>';
-while($row=mysql_fetch_assoc($result))
+while($row=$result->fetch_assoc())
 {
     if($row['catID']==$mainCat)
     {
@@ -119,8 +119,8 @@ if($subCat != NULL)
     
     echo" Sub Category: <select name='subCat' required><option value='-1'>Select Category</option>";
     $sql="SELECT * FROM categories WHERE catParent=$mainCat";
-    $result=mysql_query($sql) or die("query failed due to ".mysql_error());
-    while($row=mysql_fetch_assoc($result))
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+    while($row=$result->fetch_assoc())
     {
         if($row['catID']==$subCat)
         {

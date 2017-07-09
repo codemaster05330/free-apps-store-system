@@ -76,15 +76,15 @@ if(isset($_POST['newDev']))
         '$devSite','$devLogo',$id,'$devCounry','$devCity','$devState',$devCode,
         '$devAddress1','$devAddress2',0)";
         
-        $result=mysql_query($sql);
+        $result=$mysqli->query($sql);
          if($result==true)
          {
             logSuccess("deveoper created successfully ,it need approval to start publish ");
             
-            $devID=mysql_insert_id();
+            $devID=$mysqli->insert_id;
             
             $sql="UPDATE users SET userLevel=1,relatedID=$devID WHERE 	userID=$id";
-            $result=mysql_query($sql)or die("query failed ".mysql_error());;
+            $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
            
             header("location:./index.php");
             exit();

@@ -4,12 +4,12 @@ Technologies used: PHP and MySQL.
 demo
 ====
 
-[demo](https://)
+[demo](https://freeappstore.000webhostapp.com/)
 
 * demo credentials 
 	* admin :   admin@domain.com , admin
-	* developer: dev1@domain.com , develper1
-	* developer: dev2@domain.com , develper2
+	* developer: dev1@domain.com , developer1
+	* developer: dev2@domain.com , developer2
 	* normal user: user@domain.com , user
 	
 system details
@@ -69,13 +69,11 @@ future list
 			
 how to use it 
 =============
-	1- download images from [here](https://)
-	2- extract images folder in repo dir
-	3- setup database in dbconfig.php file located in includes folder
-	4- edit dbsetup.php to choose admin credentials defaults are
+	1- import appstore.sql to your db
+	2- edit dbsetup.php to choose admin credentials defaults are
 		login mail: admin@domain.com ,password : admin
-	4- run dbsetup.php file to setup system tables
-	5- note that system will be empty ,you need to create developer account and add apps to it
+	3- run dbsetup.php file to setup system tables
+	4- note that system will be empty ,you need to create developer account and add apps to it
 	
 	
 finally

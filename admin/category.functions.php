@@ -13,11 +13,12 @@ include_once('../includes/common.functions.php');
  */
  function newCatForm()
  {
+    global $mysqli;
     echo '<form action="category.php?action=add" method="post"  id="editForm">
 <label>Main Category <select name="mainCat"><option value="-1">none</option>';
 $sql='SELECT * FROM categories WHERE catParent IS NULL ';
-$result=mysql_query($sql) or die("query failed due to ".mysql_error());
-while( $row=mysql_fetch_assoc($result))
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+while( $row=$result->fetch_assoc())
 {
     echo "<option value=\"{$row['catID']}\">{$row['catName']}</option>";
 }
@@ -34,9 +35,10 @@ echo '</select></label><br />
  */
  function editCategoryForm($id)
  {
+    global $mysqli;
     $sql="SELECT * FROM categories WHERE catID=$id";
-            $result=mysql_query($sql) or die("query failed due to ".mysql_error());
-            if(mysql_num_rows($result)==0)//redirect if unknown id 
+            $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+            if($result->num_rows==0)//redirect if unknown id 
             {
                 logError("unkown category id");
               header("location:./category.php");
@@ -44,7 +46,7 @@ echo '</select></label><br />
             }
             else
             {//load category content to be edited
-             $row=mysql_fetch_assoc($result);
+             $row=$result->fetch_assoc();
              $name=$row['catName'];
              $parent= $row['catParent'];
              $id=$row['catID'];
@@ -52,9 +54,9 @@ echo '</select></label><br />
                 <label>Main Category <select name="mainCat"><option value="-1">none</option>';
                 
                 $sql='SELECT * FROM categories WHERE catParent IS NULL ';
-                $result=mysql_query($sql) or die("query failed due to ".mysql_error());
+                $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
                  
-                 while($row=mysql_fetch_assoc($result))
+                 while($row=$result->fetch_assoc())
                  {
                 
                     if($row['catID']==$parent)
@@ -83,9 +85,9 @@ echo '</select></label><br />
  */
  function updateCategory($id,$name,$parent)
  {
-   
+        global $mysqli;
           $sql="UPDATE categories SET catName='$name',catParent=$parent WHERE catID=$id ";  
-          mysql_query($sql) or die("query failed due to ".mysql_error());
+          $mysqli->query($sql)or die("query failed due to ".mysqli_error());
           logSuccess("category updated successfully");
  } 
  
@@ -95,8 +97,9 @@ echo '</select></label><br />
   */
   function delCategory($id)
   {
+    global $mysqli;
     $sql="DELETE FROM categories WHERE catID=$id ";
-    mysql_query($sql) or die("query failed due to ".mysql_error());
+   $mysqli->query($sql)or die("query failed due to ".mysqli_error());
     logSuccess("category deleted successfully");
   }
   
@@ -107,8 +110,9 @@ echo '</select></label><br />
    */
   function addcategory($name,$parent)
   {
+    global $mysqli;
     $sql="INSERT INTO categories (catName,catParent)VALUES('$name',$parent)";  
-    mysql_query($sql) or die("query failed due to ".mysql_error());
+   $mysqli->query($sql)or die("query failed due to ".mysqli_error());
     logSuccess("category added successfully");
   }
  /**
@@ -117,16 +121,17 @@ echo '</select></label><br />
     */
    function displayCategories($result)
     {
+        global $mysqli;
         echo '<table><tr><th>Category</th><th>Parent Category</th><th>actions</th></tr>';
-        while($row=mysql_fetch_assoc($result))
+        while($row=$result->fetch_assoc())
         {
             echo '<tr><td>'.$row['catName'].'</td>';
             $name='None';
             if($row['catParent']!= NULL)
             {
                 $sql="SELECT * FROM categories WHERE catID={$row['catParent']}";
-            $result2=mysql_query($sql) or die("query failed due to ".mysql_error());
-             $row2=mysql_fetch_assoc($result2);
+            $result2=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+             $row2=$result2->fetch_assoc();
              $name=$row2['catName'];
             }
             echo '<td>'.$name.'</td>';

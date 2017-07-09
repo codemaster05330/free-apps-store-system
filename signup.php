@@ -2,11 +2,11 @@
 include_once('./includes/common.functions.php');
 if(isset($_POST['signup']))
 {
-    $email=mysql_real_escape_string($_POST['userEmail']);
-    $password1=mysql_real_escape_string($_POST['password1']);
-    $password2=mysql_real_escape_string($_POST['password2']);
-    $firstName=mysql_real_escape_string($_POST['fName']);
-    $lastName=mysql_real_escape_string($_POST['lName']);
+    $email=mysqli_real_escape_string($mysqli,$_POST['userEmail']);
+    $password1=mysqli_real_escape_string($mysqli,$_POST['password1']);
+    $password2=mysqli_real_escape_string($mysqli,$_POST['password2']);
+    $firstName=mysqli_real_escape_string($mysqli,$_POST['fName']);
+    $lastName=mysqli_real_escape_string($mysqli,$_POST['lName']);
     
     if($password1 != $password2)
     {
@@ -17,8 +17,8 @@ if(isset($_POST['signup']))
     $password1=md5($password1);
     
     $sql="SELECT * FROM users WHERE userEmail='$email'";
-    $result=mysql_query($sql)or die("query failed ".mysql_error());
-    if(mysql_num_rows($result)==1)
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+    if($result->num_rows==1)
     {
         logError("already registered email.");
     }
@@ -28,9 +28,9 @@ if(isset($_POST['signup']))
         
         $sql ="INSERT INTO users (userEmail,userPassword,userFirstName,userLastName,userLevel,joinDate,userKey,userState) VALUES
                 ('$email','$password1','$firstName','$lastName',2,NOW(),'$key',0)";
-        $result=mysql_query($sql)or die("query failed ".mysql_error());
+        $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
         logSuccess("account created succeffuly");
-        $id=mysql_insert_id();
+        $id=$mysqli->insert_id;
         header("location:./mailSender.php?action=activate&id=$id");
         exit();
     }

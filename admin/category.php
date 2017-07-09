@@ -95,8 +95,8 @@ if(isset($_GET['action']))
 else
 {
    $sql="SELECT * FROM categories";
-   $result=mysql_query($sql) or die("query failed due to ".mysql_error());
-   if(mysql_num_rows($result)==0)
+   $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+   if($result->num_rows==0)
     {
         echo 'NO categories defined yet , <a href="./category.php?action=new" id="hrefBtn">add new category</a>';
     }

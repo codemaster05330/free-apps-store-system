@@ -25,16 +25,16 @@ printError();
 if(isset($_GET['x']) && isset($_GET['y']))
 {
     $sql ="SELECT userKey,userState FROM users WHERE userID={$_GET['x']} ";
-    $result=mysql_query($sql)or die("query failed ".mysql_error());
-    if(mysql_num_rows($result)==1)
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+    if($result->num_rows==1)
     {
-         $row=mysql_fetch_assoc($result);
+         $row=$result->fetch_assoc();
          $key=$row['userKey'];
          $state=$row['userState'];
          if($state==0 && $key==$_GET['y'])
          {
             $sql="UPDATE users SET userKey='NULL',userState=1 WHERE userID={$_GET['x']} ";
-            $result=mysql_query($sql)or die("query failed ".mysql_error());
+            $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
             echo '<div id="loginForm">
             your acount has successfully activated,you can  now <a href="./login.php"id="hrefBtn">login</a>
             </div>';

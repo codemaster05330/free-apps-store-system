@@ -3,8 +3,8 @@
 include_once('../includes/common.functions.php');
 $devID=1;
 $sql="SELECT appID,appName,appIcon,appReleaseDate,appRating,appDownloads FROM apps WHERE developerID=$devID";
-    $appsResult=mysql_query($sql) or die("query failed due to ".mysql_error());
-    $appsCount=mysql_num_rows($appsResult);       
+    $appsResult=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+    $appsCount=$appsResult->num_rows;       
 ?>
 <div id="devInfo">
 <h4>Information</h4>
@@ -21,7 +21,7 @@ else
 {
     echo '<table><tr><th>N</th><th>App</th><th>Rating</th><th>Downloads</th></tr>';
     $count=1;
-    while($row=mysql_fetch_assoc($appsResult))
+    while($row=$appsResult->fetch_assoc())
     {
         echo "<tr><td>$count</td>";
         $count++;

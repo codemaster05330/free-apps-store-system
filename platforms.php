@@ -7,8 +7,8 @@ include_once('./appsfilter.php');
 <tr><th>Platforms</th></tr>
 <?php
 $sql="SELECT * FROM platforms ";
-$result=mysql_query($sql) or die("query failed due to ".mysql_error());
-while($row=mysql_fetch_assoc($result))
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+while($row=$result->fetch_assoc())
 {
     echo '<tr><td><a href="?p='.$row['platformID'].'">'.$row['platformName'].'</a></td></tr>';
 }

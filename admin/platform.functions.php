@@ -27,9 +27,10 @@ function newPlatformForm()
  */
  function editPlatformForm($id)
  {
+    global $mysqli;
     $sql="SELECT * FROM platforms WHERE platformID=$id";
-            $result=mysql_query($sql) or die("query failed due to ".mysql_error());
-            if(mysql_num_rows($result)==0)//redirect if unknown id 
+            $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+            if($result->num_rows==0)//redirect if unknown id 
             {
                 logError("unkown platform id");
               header("location:./platform.php");
@@ -37,7 +38,7 @@ function newPlatformForm()
             }
             else
             {//load platform content to be edited
-             $row=mysql_fetch_assoc($result);
+             $row=$result->fetch_assoc();
              $name=$row['platformName'];
              $icon= $row['platformIcon'];
              $id=$row['platformID'];
@@ -57,12 +58,12 @@ function newPlatformForm()
  */
  function updatePlatform($id,$name,$icon)
  {
-   
+            global $mysqli;
           $icon=addslashes($icon);
           $icon=file_get_contents($icon);
           $icon=base64_encode($icon);
           $sql="UPDATE platforms SET platformName='$name',platformIcon='$icon' WHERE platformID=$id ";  
-          mysql_query($sql) or die("query failed due to ".mysql_error());
+          $mysqli->query($sql)or die("query failed due to ".mysqli_error());
           logSuccess("platform updated successfully");
  } 
  
@@ -72,8 +73,9 @@ function newPlatformForm()
   */
   function delPlatform($id)
   {
+    global $mysqli;
     $sql="DELETE FROM platforms WHERE platformID=$id ";
-    mysql_query($sql) or die("query failed due to ".mysql_error());
+    $mysqli->query($sql)or die("query failed due to ".mysqli_error());
     logSuccess("platform deleted successfully");
   }
   
@@ -84,11 +86,12 @@ function newPlatformForm()
    */
   function addPlatform($name,$icon)
   {
+    global $mysqli;
     $icon=addslashes($icon);
     $icon=file_get_contents($icon);
     $icon=base64_encode($icon);
     $sql="INSERT INTO platforms (platformName,platformIcon)VALUES('$name','$icon')";  
-    mysql_query($sql) or die("query failed due to ".mysql_error());
+    $mysqli->query($sql)or die("query failed due to ".mysqli_error());
     logSuccess("platform added successfully");
    }
    
@@ -98,8 +101,9 @@ function newPlatformForm()
     */
    function displayPlatforms($result)
     {
+        global $mysqli;
         echo '<table><tr><th>Platform</th><th>actions</th></tr>';
-        while($row=mysql_fetch_assoc($result))
+        while($row=$result->fetch_assoc())
         {
             echo '<tr><td id="appLogo"><img id="smallIcon" src="data:image;base64,'.$row['platformIcon'].'">'.$row['platformName'].'</td>';
             echo '<td><a href="./platform.php?action=edit&id='.$row['platformID'].'" id="hrefBtn">edit</a>';

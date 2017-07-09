@@ -77,7 +77,7 @@ if(isset($_POST['submit']))
               appState) VALUES ('$appName','$shortDesc','$longDesc','$icon',$id,$appVer,'$appRelease',
               '$appLang',$mainCat,$subCat,$appPlatform,'$appReq',$appSize,'$Links[0]','$Links[1]','$vedioLink',
               '$screenshots[0]','$screenshots[1]','$screenshots[2]','$screenshots[3]','$screenshots[4]',0)";
-            mysql_query($sql) or die("query failed due to ".mysql_error());
+            $mysqli->query($sql)or die("query failed due to ".mysqli_error());
             logSuccess($appName."app added successfuly ");
             header("location:./newApp");
             exit();

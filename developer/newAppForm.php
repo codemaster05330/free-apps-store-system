@@ -30,10 +30,10 @@
 <?php 
 include_once('../includes/dbconfig.php');
 $sql="SELECT * FROM platforms";
-$result=mysql_query($sql) or die("query failed due to ".mysql_error());
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
 echo '<p><label>Platform : </label><select required name="platform">';
 echo '<option value="0">select platform</option>' ;
-while($row=mysql_fetch_assoc($result))
+while($row=$result->fetch_assoc())
 {
  echo '<option value="'.$row['platformID'].'">'.$row['platformName'].'</option>' ;  
 }
@@ -41,9 +41,9 @@ echo '</select></p>';
 
 echo '<p><label>Main Category : </label><select id="mainCat" name="mainCat" required>';
 $sql="SELECT * FROM categories Where catParent Is NULL";
-$result=mysql_query($sql) or die("query failed due to ".mysql_error());
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
 echo '<option value="0">select category</option>';
-while($row=mysql_fetch_assoc($result))
+while($row=$result->fetch_assoc())
 {
  echo '<option value="'.$row['catID'].'">'.$row['catName'].'</option>' ;  
 }

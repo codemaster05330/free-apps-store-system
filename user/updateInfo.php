@@ -11,7 +11,7 @@ if(isset($_POST['updateLogo']))
          $logo=file_get_contents($logo);
          $logo=base64_encode($logo);
          $sql="UPDATE users SET userImg='$logo' WHERE userID=$id ";
-         $result=mysql_query($sql);
+         $result=$mysqli->query($sql);
          if($result==true)
          {
             logSuccess("image updated successfully");
@@ -38,7 +38,7 @@ elseif(isset($_POST['updateNames']))
     if($firstName !="" && $lastName !="")
     {
         $sql="UPDATE users SET userFirstName='$firstName' ,userLastName='$lastName' WHERE userID=$id ";
-         $result=mysql_query($sql);
+         $result=$mysqli->query($sql);
          if($result==true)
          {
             logSuccess("Names updated successfully");
@@ -63,7 +63,7 @@ elseif(isset($_POST['updateEmail']))
     if($email !="")
     {
         $sql="UPDATE users SET userEmail='$email' WHERE userID=$id ";
-         $result=mysql_query($sql);
+         $result=$mysqli->query($sql);
          if($result==true)
          {
             logSuccess("email updated successfully");
@@ -90,7 +90,7 @@ elseif(isset($_POST['updatePass']))
     {
         $password=md5($password1);
         $sql="UPDATE users SET userPassword='$password' WHERE userID=$id ";
-         $result=mysql_query($sql);
+         $result=$mysqli->query($sql);
          if($result==true)
          {
             logSuccess("password updated successfully");
@@ -115,10 +115,10 @@ else
     
 
 $sql="SELECT * FROM users WHERE userID=$id";
- $result=mysql_query($sql)or die("query failed ".mysql_error());
- if(mysql_num_rows($result)==1)
+ $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+ if($result->num_rows==1)
  {
-    $row=mysql_fetch_assoc($result);
+    $row=$result->fetch_assoc();
     echo '<form method="post" action="./editInfo.php" enctype="multipart/form-data"><table id="editInfo"><tr><td>';
     if($row['userImg']=="")
     {

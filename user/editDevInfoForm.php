@@ -7,11 +7,11 @@ if(isSignedIn())
     {
         $devID=$_SESSION['devID'];
         $sql="SELECT * from developers WHERE developerID=$devID";
-        $result=mysql_query($sql)or die("query failed ".mysql_error());
-        if(mysql_num_rows($result)==1)
+        $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+        if($result->num_rows==1)
         {
             
-        $row=mysql_fetch_assoc($result);
+        $row=$result->fetch_assoc();
         $devName=$row['developerName'];
         $devEmail=$row['developerEmail'];
         $devSite=$row['developerWebsite'];

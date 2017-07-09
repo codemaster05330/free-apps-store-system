@@ -23,8 +23,8 @@ if(isset($_GET['link'])&& isset($_GET['appID']))
 {
     echo 'redirect to '.$_GET['link'];
     $sql="SELECT appDownloads FROM apps WHERE appState=1 AND appID={$_GET['appID']}";
-    $result=mysql_query($sql) or die("query failed due to ".mysql_error());
-    if(mysql_num_rows($result)==0)
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+    if($result->num_rows==0)
     {
        //no app id defined >> redirect
         header("location:./index.php");
@@ -32,11 +32,11 @@ if(isset($_GET['link'])&& isset($_GET['appID']))
     }
     else
     {
-       $row=mysql_fetch_assoc($result);
+       $row=$result->fetch_assoc();
        $downCount=$row['appDownloads'];
        $downCount++;
        $sql ="UPDATE apps SET appDownloads=$downCount WHERE appID={$_GET['appID']}";
-       $result=mysql_query($sql) or die("query failed due to ".mysql_error());
+       $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
        header("location:{$_GET['link']}");
        exit();
     }
@@ -44,8 +44,8 @@ if(isset($_GET['link'])&& isset($_GET['appID']))
 elseif(isset($_GET['appID']))
 {
     $sql="SELECT appID,appName,appIcon,appShortDesc,appVersion,appPrimaryLink,appSecondaryLink FROM apps WHERE appState=1 AND appID={$_GET['appID']}";
-    $result=mysql_query($sql) or die("query failed due to ".mysql_error());
-    if(mysql_num_rows($result)==0)
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+    if($result->num_rows==0)
     {
        //no app id defined >> redirect
         header("location:./index.php");
@@ -53,7 +53,7 @@ elseif(isset($_GET['appID']))
     }
     else
     {
-        $row=mysql_fetch_assoc($result);
+        $row=$result->fetch_assoc();
         
         echo '<table id="miniApp"><tr><td><img id="mediumIcon" src="data:image;base64,'.$row['appIcon'].'"></td>';
     echo '<td><a href="../app.php?appID='.$row['appID'].'"><strong>'.$row['appName'].' '.$row['appVersion'].'</strong></a>';

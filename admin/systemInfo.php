@@ -5,20 +5,20 @@
 <?php
 include_once('../includes/dbconfig.php');
 $sql='SELECT * FROM users';
-$result=mysql_query($sql) or die("query failed due to ".mysql_error());
-$users=mysql_num_rows($result);
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+$users=$result->num_rows;
 
 $sql='SELECT * FROM developers';
-$result=mysql_query($sql) or die("query failed due to ".mysql_error());
-$developers=mysql_num_rows($result);
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+$developers=$result->num_rows;
 
 $sql='SELECT * FROM apps';
-$result=mysql_query($sql) or die("query failed due to ".mysql_error());
-$apps=mysql_num_rows($result);
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+$apps=$result->num_rows;
 
 $sql='SELECT * FROM reviews';
-$result=mysql_query($sql) or die("query failed due to ".mysql_error());
-$reviews=mysql_num_rows($result);
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+$reviews=$result->num_rows;
 
 echo "<tr><td>Users</td><td>$users</td></tr>
 <tr><td>Developer</td><td>$developers</td></tr>
@@ -32,16 +32,16 @@ echo "<tr><td>Users</td><td>$users</td></tr>
 <tr><th colspan="2">Pending Requests</th></tr>
 <?php
 $sql='SELECT * FROM developers WHERE approvedBy IS NULL';
-$result=mysql_query($sql) or die("query failed due to ".mysql_error());
-$developers=mysql_num_rows($result);
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+$developers=$result->num_rows;
 
 $sql='SELECT * FROM apps WHERE approvedBy IS NULL';
-$result=mysql_query($sql) or die("query failed due to ".mysql_error());
-$apps=mysql_num_rows($result);
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+$apps=$result->num_rows;
 
 $sql='SELECT * FROM reviews WHERE approvedBy IS NULL';
-$result=mysql_query($sql) or die("query failed due to ".mysql_error());
-$reviews=mysql_num_rows($result);
+$result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+$reviews=$result->num_rows;
 
 echo "<tr><td><a href=\"./developers.php?action=pending\" id=\"hrefBtn\">Developer</a></td><td>$developers</td></tr>
 <tr><td><a href=\"./apps.php?action=pending\" id=\"hrefBtn\">Apps</a></td><td>$apps</td></tr>

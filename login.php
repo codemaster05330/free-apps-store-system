@@ -24,8 +24,8 @@ if(isset($_POST['login']))
         
         
     }
-    $email=mysql_real_escape_string($_POST['userEmail']);
-    $password=mysql_real_escape_string($_POST['password']);
+    $email=mysqli_real_escape_string($mysqli,$_POST['userEmail']);
+    $password=mysqli_real_escape_string($mysqli,$_POST['password']);
     signin($email,$password);
     
 }

@@ -15,8 +15,10 @@ include_once('../includes/common.functions.php');
  */
  function delDevApp($appID,$devID)
  {
+    global $mysqli;
+    
     $sql="DELETE FROM apps WHERE appID=$appID AND developerID=$devID ";
-    mysql_query($sql) or die("query failed due to ".mysql_error());
+    $mysqli->query($sql)or die("query failed due to ".mysqli_error());
     logSuccess("app deleted successfully");
  }
  
@@ -27,8 +29,9 @@ include_once('../includes/common.functions.php');
   */ 
   function publishDevApp($appID,$devID)
   {
+    global $mysqli;
     $sql="UPDATE apps SET appState=1 WHERE appID=$appID AND developerID=$devID ";
-    mysql_query($sql) or die("query failed due to ".mysql_error());
+    $mysqli->query($sql)or die("query failed due to ".mysqli_error());
     logSuccess("app published successfully");
   }
   
@@ -39,8 +42,9 @@ include_once('../includes/common.functions.php');
    */ 
   function unpublishDevApp($appID,$devID)
   {
+    global $mysqli;
     $sql="UPDATE apps SET appState=3 WHERE appID=$appID AND developerID=$devID ";
-    mysql_query($sql) or die("query failed due to ".mysql_error());
+    $mysqli->query($sql)or die("query failed due to ".mysqli_error());
     logSuccess("app unpublished successfully");
   } 
   
@@ -50,9 +54,11 @@ include_once('../includes/common.functions.php');
    */ 
   function displayDevApps($devID)
   {
+    global $mysqli;
+    
      $sql="SELECT appID,appName,appIcon,appReleaseDate,appRating,appState FROM apps WHERE developerID=$devID";
-    $result=mysql_query($sql) or die("query failed due to ".mysql_error());
-    if(mysql_num_rows($result)==0)
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+    if($result->num_rows==0)
     {
         echo "you havn't added apps yet.";
         echo '<a href="./newApp.php" id="hrefBtn"> new App</a>';
@@ -62,7 +68,7 @@ include_once('../includes/common.functions.php');
         echo '<a href="./newApp.php" id="hrefBtn"> new App</a>';
         echo '<table class="appsList"><tr><th>N</th><th>Name</th><th>Release Date</th><th>Rating</th><th>State</th><th>actions</th></tr>';
         $count=1;
-        while($row=mysql_fetch_assoc($result))
+        while($row=$result->fetch_assoc())
         {
             echo "<tr><td>$count</td>";
             $count++;

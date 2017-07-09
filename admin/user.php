@@ -69,7 +69,7 @@ if(isset($_GET['action']))
 else
 {
     $sql="SELECT * FROM users";
-   $result=mysql_query($sql) or die("query failed due to ".mysql_error());
+   $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
    displayUsers($result);
 }
     
