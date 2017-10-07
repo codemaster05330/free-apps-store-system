@@ -69,11 +69,10 @@ future list
 			
 how to use it 
 =============
-	1- import appstore.sql to your db
-	2- edit dbsetup.php to choose admin credentials defaults are
-		login mail: admin@domain.com ,password : admin
-	3- run dbsetup.php file to setup system tables
-	4- note that system will be empty ,you need to create developer account and add apps to it
+	1- import appstore.sql to your db , as it contain database setup 
+	2- copy content to your local server directory 
+
+	
 	
 	
 finally
