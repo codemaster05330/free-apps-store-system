@@ -33,7 +33,7 @@ if(isset($_GET['action']))
         case "approve":
         if(isset($_GET['id']))//redirect if id isn't defined
         {
-         approveDeveloper($_GET['id'],$_SESSION['id']);   
+         approveDeveloper($_GET['id'],$_SESSION['userID']);   
         }
         header("location:./developers.php");
         exit();

@@ -63,8 +63,8 @@ if(isset($_POST['newDev']))
  $devCounry=$_POST['devCountry'];
  $devCode=$_POST['devCode'];
  $sql="SELECT * FROM developers WHERE developerName='$devName'";
-    $result=mysql_query($sql)or die("query failed ".mysql_error());
-    if(mysql_num_rows($result)==1)
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+    if($result->num_rows==1)
     {
         logError("already registered Name.");
        

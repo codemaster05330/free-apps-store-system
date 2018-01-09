@@ -16,7 +16,7 @@ include_once('../includes/common.functions.php');
  {
     global $mysqli;
     $sql="UPDATE developers SET approvedBy=$revId,approvalDate= NOW() WHERE developerID=$id ";  
-         $mysqli->query($sql)or die("query failed due to ".mysqli_error());
+         $mysqli->query($sql)or die("query failed due to ".$mysqli->error);
           logSuccess("developer approved successfully");
  }
  /**
@@ -27,7 +27,7 @@ include_once('../includes/common.functions.php');
  {
     global $mysqli;
     $sql="UPDATE developers SET approvedBy=NULL WHERE developerID=$id ";  
-          $mysqli->query($sql)or die("query failed due to ".mysqli_error());
+          $mysqli->query($sql)or die("query failed due to ".$mysqli->error);
           logSuccess("developer unapproved successfully");
  }
 

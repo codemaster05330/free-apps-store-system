@@ -70,16 +70,16 @@ if(isset($_POST['submit']))
     //print_r($screenshots);
     //print_r($Links);
     //$id=$_SESSION['id'];
-    $id=1;
+    $id=$_SESSION['devID'];
     $sql= "INSERT INTO apps(appName,appShortDesc,applongDesc,appIcon,developerID,appVersion,appReleaseDate,
             appLanguage,appMainCatID,appSubCatID,appPlatformID,appSysRequirements,appSize,appPrimaryLink,
              appSecondaryLink,appVideoLink,appScreenshot1,appScreenshot2,appScreenshot3,appScreenshot4,appScreenshot5,
               appState) VALUES ('$appName','$shortDesc','$longDesc','$icon',$id,$appVer,'$appRelease',
               '$appLang',$mainCat,$subCat,$appPlatform,'$appReq',$appSize,'$Links[0]','$Links[1]','$vedioLink',
               '$screenshots[0]','$screenshots[1]','$screenshots[2]','$screenshots[3]','$screenshots[4]',0)";
-            $mysqli->query($sql)or die("query failed due to ".mysqli_error());
+            $mysqli->query($sql)or die("query failed due to ".$mysqli->error);
             logSuccess($appName."app added successfuly ");
-            header("location:./newApp");
+            header("location:./newApp.php");
             exit();
 }else
 {
