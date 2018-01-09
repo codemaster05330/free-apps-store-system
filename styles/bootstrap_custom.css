@@ -1,0 +1,83 @@
+.m-navbar
+{
+	background-color: #8d00d6;
+	border-color: #5c008c;
+	color: white;
+}
+
+.m-navbar .navbar-brand
+{
+	color: white;
+}
+
+.navbar-default .navbar-nav > .open > a:hover,
+ .navbar-default .navbar-nav > .open > a:focus
+{
+	background-color: #8d00d6;
+	color: white;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #fff;
+    background-color: #0063EA;
+}
+
+.nav-pills > li> a, .nav-pills > li> a:hover, .nav-pills > li > a:focus {
+    color: #fff;
+    background-color: #3D8BF5;
+}
+
+.m-navbar .navbar-brand:hover
+{
+	color: white;
+}
+.navbar-default .navbar-nav > li > a
+{
+	color: white;
+}
+.navbar-default .navbar-nav > li > a:hover
+{
+	color: black;
+}
+
+.dropdown-menu
+{
+	background-color: #8d00d6;
+	border-color: #5c008c;
+	
+}
+.dropdown-menu > li > a
+{
+	color: white;
+}
+
+.navbar-default .navbar-nav > .active > a
+{
+	background-color: #8d00d6;
+}
+
+.label-main
+{
+	background-color: #8d00d6;
+	padding: 8px;
+}
+
+.table
+{
+	background-color: white; 
+}
+
+.category-label
+{
+	background-color: #8d00d6;
+	color: white;
+}
+.panel-success>.panel-heading
+{
+	background-color: #8d00d6;
+	color: white;
+}
+.app-img
+{
+	padding: 0px;
+}

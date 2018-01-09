@@ -1,18 +1,23 @@
 <div id="recentAppsList"> 
+	<p class="text-center"><span class="label label-primary label-main">Recent Apps</span></p>
+	<div class="row">
+ 	<hr>
+ </div>	
 <?php
 //include_once('../includes/common.functions.php');
-echo '<table><tr><th>Recent Apps</th></tr>';
 $sql="SELECT appID,appName,appIcon,appShortDesc,appVersion,approvalDate FROM apps WHERE appState=1 ORDER BY  approvalDate  DESC LIMIT 2";
 $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
 while($row=$result->fetch_assoc())
 {
- echo '<tr><td>';
-    echo '<table id="barApp"><tr><td rowspan="2" id="appLogo"><img id="mediumIcon" src="data:image;base64,'.$row['appIcon'].'"></td>';
-    echo '<td><a href="../app.php?appID='.$row['appID'].'"><strong>'.$row['appName'].' '.$row['appVersion'].'</strong></a>';
-    echo '<p><small>'.$row['appShortDesc'].'</small></p></td></tr>';
-    echo '<tr><td><small>at : '.Date('d-m-y',strtotime($row['approvalDate'])).'</small></td></tr>';
-    echo '</table></td></tr>'; 
+ echo '<div class="row app-xs">';
+    echo '<div class="col col-md-2 app-img" ><img id="smallIcon" src="data:image;base64,'.$row['appIcon'].'" ></div>';
+    echo '<div class="col col-md-10"><a href="./app.php?appID='.$row['appID'].'"><h6>'.$row['appName'].' '.$row['appVersion'].'</h6></a>';
+    echo '<small>'.$row['appShortDesc'].'</small>';
+    echo '<div><small>at : '.Date('M ,j Y',strtotime($row['approvalDate'])).'</small></div></div>';
+    echo '</div>'; 
 }
-echo '</table>'; 
 ?>
 </div>
+<div class="row">
+ 	<hr>
+ </div>	

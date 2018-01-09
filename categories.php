@@ -3,8 +3,8 @@ include_once('./includes/common.functions.php');
 include_once('./appsfilter.php'); 
 ?>
 <div id="categoriesBar">
-<table>
-<tr><th>Categories</th></tr>
+    <p class="text-center"><span class="label label-primary label-main">Categories</span></p>
+<table class="table table-condensed">
 <?php
 $sql="SELECT * FROM categories WHERE catParent IS NULL";
 $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());

@@ -34,6 +34,8 @@ if(isset($_POST['login']))
 <html>
 <head>
     <title>login</title>
+    <link rel="stylesheet" href="./styles/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="./styles/bootstrap_custom.css" type="text/css"/>
     <link rel="stylesheet" href="./styles/mainStyle.css" type="text/css"/>
 </head>
 
@@ -42,28 +44,47 @@ if(isset($_POST['login']))
 <div id="upperPanel">
 <?php
 include_once('./layout/upperBar.php');
-include_once('./layout/searchPanel.php');
+//include_once('./layout/searchPanel.php');
 ?>
 </div>
-<div id="wrapper">
-<div id="loginContent">
-<form id="loginForm" method="post" action="">
-<table>
-<tr><td id="error">
+<div class=" container">
+<?php
+include_once('./layout/searchPanel.php');
+?>    
+<div class="row">
+<div class="col col-md-4 col-md-offset-4">
+   <div class="panel panel-success">
+    <div class="panel-heading">
+        LogIn
+    </div>
+    <div class="panel-body">
+     
+<form id="loginForm" method="post" action="" class="form">
+<div class="form-group alert-warning">
 <?php
 printError();
 printSuccess();
 ?>
-</td></tr>
-<tr><td><input type="email" name="userEmail" placeholder="type your email " <?php  if(isset($_COOKIE['userEmail'])){echo 'value="'.$_COOKIE['userEmail'].'"';}?> required /></td></tr>
-<tr><td><input type="password" name="password" placeholder="type your password " <?php  if(isset($_COOKIE['userPassword'])){echo 'value="'.$_COOKIE['userPassword'].'"';}?> required /></td></tr>
-<tr><td><input type="checkbox" name="remember" <?php  if(isset($_COOKIE['userEmail'])){echo 'checked ';}?>/> remember me</td></tr>
-<tr><td><a href="resetPassword.php">forgot password</a></td></tr>
-<tr><td><input type="submit" name="login" value="sign in" id="hrefBtn" />
-<input type="button" value="sign up" id="hrefBtn"  onclick="location.href='./signup.php'"/></td></tr>
+</div>
+<div class="form-group">
+<input type="email" class="form-control" name="userEmail" placeholder="type your email " <?php  if(isset($_COOKIE['userEmail'])){echo 'value="'.$_COOKIE['userEmail'].'"';}?> required />
+</div>
+<div class="form-group">
+    <input type="password" class="form-control" name="password" placeholder="type your password " <?php  if(isset($_COOKIE['userPassword'])){echo 'value="'.$_COOKIE['userPassword'].'"';}?> required />
+   </div> 
+<div class="form-group">
+<input type="checkbox" name="remember" <?php  if(isset($_COOKIE['userEmail'])){echo 'checked ';}?>/> remember me</div>
+<div class="form-group">
+<a href="resetPassword.php">forgot password</a></div>
+<div class="form-group">
+<input type="submit" name="login" value="sign in" class="btn btn-success" />
+<input type="button" value="sign up" id="hrefBtn"  onclick="location.href='./signup.php'" class="btn btn-primary"/></div>
 
-</table>
+
 </form>
+</div>
+</div>
+</div>
 </div>
 </div>
 <?php
