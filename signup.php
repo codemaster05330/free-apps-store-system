@@ -43,36 +43,66 @@ if(isset($_POST['signup']))
 <html>
 <head>
     <title>sign up</title>
+    <link rel="stylesheet" href="./styles/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="./styles/bootstrap_custom.css" type="text/css"/>
     <link rel="stylesheet" href="./styles/mainStyle.css" type="text/css"/>
 </head>
 
 <body>
 
+
 <div id="upperPanel">
 <?php
 include_once('./layout/upperBar.php');
-include_once('./layout/searchPanel.php');
+//include_once('./layout/searchPanel.php');
 ?>
 </div>
-<div id="wrapper">
-<div id="loginContent">
+<div class=" container">
+<?php
+include_once('./layout/searchPanel.php');
+?>    
+<div class="row">
+<div class="col col-md-4 col-md-offset-4">
+   <div class="panel panel-success">
+    <div class="panel-heading">
+        Register
+    </div>
+    <div class="panel-body">
 <form id="loginForm" method="post" action="">
-<table id="form">
-<tr><td id="error" colspan="2">
+<div class="form-group alert-warning">
 <?php
 printError();
-?> 
-</td></tr>
-<tr><td><label>First Name :</label></td><td><input type="text" name="fName" required /></td></tr>
-<tr><td><label>Last Name :</label></td><td><input type="text" name="lName" required /></td></tr>
-<tr><td><label>Email :</label></td><td><input type="email" name="userEmail" required /></td></tr>
-<tr><td><label>Password :</label></td><td><input type="password" name="password1" required /></td></tr>
-<tr><td><label>Password again :</label></td><td><input type="password" name="password2" required /></td></tr>
-<tr><td colspan="2"><input type="submit" name="signup" value="sign up"/></td></tr>
-</table>
+printSuccess();
+?>
+</div>
+<div class="form-group">
+    <label class="control-label">First Name :</label>
+    <input type="text" name="fName" required  class="form-control" />
+</div>
+<div class="form-group">
+    <label class="control-label">Last Name :</label>
+    <input type="text" name="lName" required  class="form-control"/>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Email :</label>
+    <input type="email" name="userEmail" required class="form-control" />
+</div>
+<div class="form-group">
+    <label class="control-label">Password :</label>
+    <input type="password" name="password1" required class="form-control"/>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Password again :</label>
+    <input type="password" name="password2" required class="form-control"/>
+</div>
+<div class="form-group">
+    <input type="submit" name="signup" value="sign up" class="btn btn-success btn-block" />
+</div>
 </form>
 </div>
-</div>
+</div></div></div></div>
 <?php
 include_once('./layout/footerBar.php');
 ?>
