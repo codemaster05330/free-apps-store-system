@@ -2,19 +2,19 @@
 $tableRow=1;
 
 echo '<table id="thumbnail"><tr><td>';
-echo '<img src="'.$row['appScreenshot1'].'"></td>';
+echo '<img src="'.$app['appScreenshot1'].'"></td>';
 
 $tableRow++;//2
 
-if($row['appScreenshot2']!="")
+if($app['appScreenshot2']!="")
 {
-    echo '<td><img src="'.$row['appScreenshot2'].'"></td>';
+    echo '<td><img src="'.$app['appScreenshot2'].'"></td>';
     $tableRow++;//3
 } 
 
-if($row['appScreenshot3']!="")
+if($app['appScreenshot3']!="")
 {
-    echo '<td><img src="'.$row['appScreenshot3'].'"></td>';
+    echo '<td><img src="'.$app['appScreenshot3'].'"></td>';
     if($tableRow%2!=0)
     {
         echo '</tr><tr>';
@@ -22,9 +22,9 @@ if($row['appScreenshot3']!="")
     $tableRow++;
 } 
 
-if($row['appScreenshot4']!="")
+if($app['appScreenshot4']!="")
 {
-    echo '<td><img src="'.$row['appScreenshot4'].'"></td>';
+    echo '<td><img src="'.$app['appScreenshot4'].'"></td>';
     if($tableRow%2!=0)
     {
         echo '</tr><tr>';
@@ -32,9 +32,9 @@ if($row['appScreenshot4']!="")
     $tableRow++;
 } 
 
-if($row['appScreenshot5']!="")
+if($app['appScreenshot5']!="")
 {
-    echo '<td><img src="'.$row['appScreenshot5'].'"></td>';
+    echo '<td><img src="'.$app['appScreenshot5'].'"></td>';
     if($tableRow%2!=0)
     {
         echo '</tr><tr>';
@@ -47,8 +47,8 @@ if($row['appScreenshot5']!="")
     }
     echo '</table>';
     
-     if($row['appVideoLink'] !="")
+     if($app['appVideoLink'] !="")
      {
-        echo "<div id='pro_vedio'><iframe   src='{$row['appVideoLink']}'></iframe></div>";
+        echo "<div id='pro_vedio'><iframe   src='{$app['appVideoLink']}'></iframe></div>";
      }
 ?>

@@ -1,25 +1,17 @@
 
-#appContent
+.app-img-big
 {
-    width:96%;
-    margin:0;
-    padding:20px;
-    border:1px solid black;
+    width: 180px;
+    height: 180px;
 }
-#appContent table
+h1
 {
-    background: #ddd;
-    padding:5px;
-    vertical-align: top;
-    text-align: left; 
+    margin: 0px;
 }
 
-
-#appContent p
+.app-short-desc
 {
-    background: #ddd;
-    border:1px solid black;
-    
+    font-size: 18px;
 }
 table
 {

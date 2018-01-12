@@ -1,71 +1,204 @@
 <div id="appContent">
+
 <?php
+
 include_once('./includes/common.functions.php');
+
     if(!isset($_GET['appID']))
+
     {
+
         header("location:./index.php");
+
         exit();   
-    }
-    else
-    {
-        $appID=$_GET['appID'];
-        $devID=1;
-        $sql="SELECT * FROM apps WHERE appID=$appID AND appState=1";
-    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
-    if($result->num_rows==0)
-    {
-        logError("unkown app");
-        header("location:./index.php");
-        exit();
-    }
-    else
-    {
-     $row=$result->fetch_assoc();
-     echo '<table><tr><td rowspan="3" id="appLogo"><img id="mediumIcon" src="data:image;base64,'.$row['appIcon'].'"></td>';
-     echo '<td><h4>'.$row['appName'].'</h4></td><td>Rating:'.$row['appRating'].'</td></tr>';
-     $sql2="SELECT developerName FROM developers WHERE developerID={$row['developerID']}";
-     $result2=$mysqli->query($sql2)or die("query failed due to ".mysqli_error());
-     $row2=$result2->fetch_assoc();
-     echo '<tr><td>By : <a href="./developer.php?id='.$row['developerID'].'">'.$row2['developerName'].'</a></td>';
-     echo '<td>Downloads:'.$row['appDownloads'].'</td></tr>';
-     echo '<tr><td colspan="2"><a href="./download.php?appID='.$row['appID'].'" id="hrefBtn">download</a></td></tr></table>';
-     
-     echo '<div id="gallery">';
-     include_once('screenshots.php');
-     echo '</div>';
-     
-     echo '<h4>Description</h4><p id="longDesc">';
-     echo "{$row['applongDesc']} </p>";
-     
-     echo '<h4>System Requirements</h4><p id="requirements">';
-     echo "{$row['appSysRequirements']} </p>";
-     
-      echo '<h4>More Information</h4><div id="more">';
-      echo '<table><tr><td>Language : '.$row['appLanguage'].'</td><td>Release Date : '.date('d-m-y',strtotime($row['appReleaseDate'])).'</td></tr>';
-     
-     $sql2="SELECT platformName FROM platforms WHERE platformID={$row['appPlatformID']}";
-     $result2=$mysqli->query($sql2)or die("query failed due to ".mysqli_error());
-     $row2=$result2->fetch_assoc();
-      
-      echo '<tr><td>Platform : '.$row2['platformName'].'</td>';
-      
-      $sql2="SELECT catName FROM categories WHERE catID={$row['appMainCatID']}";
-     $result2=$mysqli->query($sql2)or die("query failed due to ".mysqli_error());
-     $row2=$result2->fetch_assoc();
-     
-     echo '<td>Category : '.$row2['catName'];
-     if($row['appSubCatID']!="")
-     {
-        $sql2="SELECT catName FROM categories WHERE catID={$row['appSubCatID']}";
-     $result2=$mysqli->query($sql2)or die("query failed due to ".mysqli_error());
-     $row2=$result2->fetch_assoc();
-     echo ' , '.$row2['catName'];
-     }
-      echo '</td></tr>';
-      echo '<tr><td>File Size : '.$row['appSize'].' KB</td><td><a  href="./developer.php?id='.$row['developerID'].'"id="hrefBtn">View Developer</a></td></tr>';
-      echo '</table></div>';
+
     }
 
+    else
+
+    {
+
+        $appID=$_GET['appID'];
+
+        $devID=1;
+
+        $sql="SELECT * FROM apps WHERE appID=$appID AND appState=1";
+
+    $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+
+    if($result->num_rows==0)
+
+    {
+
+        logError("unkown app");
+
+        header("location:./index.php");
+
+        exit();
+
+    }
+
+    else
+
+    {
+
+     $app=$result->fetch_assoc();
+     $sql="SELECT developerName FROM developers WHERE developerID={$app['developerID']}";
+
+     $result2=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+
+     $developer=$result2->fetch_assoc();
+
+     $sql="SELECT platformName FROM platforms WHERE platformID={$app['appPlatformID']}";
+
+     $result2=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+
+     $platform=$result2->fetch_assoc();
+
+
+      
+
+      $sql="SELECT catName FROM categories WHERE catID={$app['appMainCatID']}";
+
+     $result2=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+
+     $cat=$result2->fetch_assoc();
+
+
+     if($app['appSubCatID']!="")
+
+     {
+
+        $sql="SELECT catName FROM categories WHERE catID={$app['appSubCatID']}";
+
+     $result2=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
+
+     $subCat=$result2->fetch_assoc();
+
+     }
+
+
+    }
+
+
+
 }
+
 ?>
+<div class="row">
+    <hr>
+</div>
+
+<div class="row white-block">
+    <div class="col col-md-2">
+        <?php echo '<img class="app-img-big" src="data:image;base64,'.$app['appIcon'].'">'; ?>
+    </div>
+    <div class="col-md-10">
+        <?php  echo '<h1>'.$app['appName'].' '.$app['appVersion'].'</h1>';?>
+        <small>By : <?php echo '<a href="./developer.php?id='.$app['developerID'].'">'.$developer['developerName'].'</a>';?></small>
+        <p class="well app-short-desc">
+            <?php echo $app['appShortDesc']; ?>
+        </p>
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-md-6 col-md-offset-3 white-block">
+        <strong>Downloads: </strong><?php echo $app['appDownloads'];?>
+        , <strong>File Size: </strong><?php echo $app['appSize'].' KB';
+
+        echo '<a href="./download.php?appID='.$app['appID'].'" class="btn btn-success pull-right">download</a>';
+        ?>
+         
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-md-8 col-md-offset-2 white-block">
+    <div id="gallery">
+    <?php 
+     include_once('screenshots.php');
+     ?>
+    </div>
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-success" >
+        <div class="panel-heading">
+            Description
+        </div>
+        <div class="panel-body">
+            <?php 
+                 echo $app['applongDesc'];
+             ?>
+        </div>
+    
+    </div>
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-success" >
+        <div class="panel-heading">
+            System Requirements
+        </div>
+        <div class="panel-body">
+            <?php 
+                 echo $app['appSysRequirements'];
+             ?>
+        </div>
+    
+    </div>
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-success" >
+        <div class="panel-heading">
+            More Informations
+        </div>
+        <div class="panel-body">
+            <strong> Language :</strong>
+                <?php 
+                 echo $app['appLanguage'];
+             ?> 
+             <br>
+
+             <strong> Release Date :</strong>
+                <?php 
+                 echo date('M .j Y',strtotime($app['appReleaseDate']));
+             ?> 
+             <br>
+             <strong> Platform :</strong>
+                <?php 
+                 echo $platform['platformName'];
+             ?> 
+             <br>
+
+             <strong> Category :</strong>
+                <?php 
+                 echo $cat['catName'];
+                 if($app['appSubCatID']!="")
+                 {
+                    echo ' , '.$subCat['catName'];
+                 }
+                 echo '<br>';
+                 echo '<a  href="./developer.php?id='.$app['developerID'].'" class="btn btn-link">View Developer</a>';
+             ?> 
+             <br>
+            
+            
+        </div>
+    
+    </div>
+    </div>
+</div>
+
+<div class="row">
+    <hr>
+</div>
 </div>
