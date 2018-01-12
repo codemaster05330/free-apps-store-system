@@ -19,50 +19,76 @@
     }
     else
     {
-     $row=$result->fetch_assoc();
-     
-     echo '<p id="developerLogo">' ;
-     if($row['develperLogo']=="")
-     {
-        echo '<img src="images/placeholder.jpg"><br/>';
-     }
-     else
-     {
-       echo '<img id="mediumIcon" src="data:image;base64,'.$row['develperLogo'].'"><br/>'; 
-     }
-     echo  '<strong>'.$row['developerName'].'</strong></p>';
-     
-     echo '<p id="devContact">';
-     echo '<strong>Information</strong><table><tr>';
-     echo '<td>'.$row['developerEmail'].'</td></tr>';
-     echo '<tr>';
-     echo '<td><a href="'.$row['developerWebsite'].'">'.$row['developerWebsite'].'</a></td></tr>';
-     echo '<tr>';
-     echo '<td>'.$row['Address1'].' '.$row['Address2'].'</td></tr>';
-     echo '<tr> ';
-     echo '<td>'.$row['country'].' , '.$row['city'].' , '.$row['state'].' '.$row['zipcode'].'</td></tr></table>';
-     
-     echo '<p id="devApps"><strong>Published Applications</strong><table>';
+     $developer=$result->fetch_assoc();     
+?>
+<div class="row">
+    <div class="col col-md-2 col-md-offset-5">
+        <div class="row text-center">
+        <?php 
+        if($developer['develperLogo']=="")
+         {
+            echo '<img src="images/placeholder.jpg" class="img-circle app-img-big">';
+         }
+         else
+         {
+           echo '<img src="data:image;base64,'.$developer['develperLogo'].'" class="img-circle app-img-big">'; 
+         }
+        ?>    
+        </div>
+        <div class="row text-center">
+            <h1><?php echo $developer['developerName'];?></h1>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col col-md-8 col-md-offset-2">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+            Information
+        </div>
+        <div class="panel-body">
+            <strong>Website :</strong>
+            <?php echo $developer['developerWebsite'];?>
+            <br>
+            <strong>Email :</strong>
+            <?php echo $developer['developerEmail'];?>
+            <br>
+            <strong>Address :</strong>
+            <?php echo $developer['Address1'].' '.$developer['Address2'];
+             echo '<br> ';
+            echo $developer['country'].' , '.$developer['city'].' , '.$developer['state'].' '.$developer['zipcode'] ;?>
+            <br>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col col-md-8 col-md-offset-2">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                Published Apps
+            </div>
+            <div class="panel-body">
+                
+            
+<?php      
     $sql="SELECT appID,appName,appIcon,appShortDesc,appVersion FROM apps WHERE appState=1 AND developerID=$devID ORDER BY  appReleaseDate  DESC";
     $result=$mysqli->query($sql)or die("query failed due to ".mysqli_error());
     $count=1;
     while($row=$result->fetch_assoc())
     {
-    echo "<tr><td>$count</td><td>";
-    $count++;
-    echo '<table id="smallApp"><tr><td rowspan="2" id="appLogo"><img id="mediumIcon" src="data:image;base64,'.$row['appIcon'].'"></td>';
-    echo '<td><a href="../app.php?appID='.$row['appID'].'"><strong>'.$row['appName'].' '.$row['appVersion'].'</strong></a>';
-    echo '<p><small>'.$row['appShortDesc'].'</small></p></td></tr>';
-   // echo '<tr><td><small>Downloads : '.$row['appDownloads'].'</small></td></tr>';
-    echo '</table></td></tr>'; 
-    }
-echo '</table></p>'; 
-     
-     
-     
+    echo '<div class="row" id="smallApp">';
+    echo '<div class="col col-md-2 app-img" ><img id="mediumIcon" src="data:image;base64,'.$row['appIcon'].'" ></div>';
+    echo '<div class="col col-md-10"><a href="./app.php?appID='.$row['appID'].'"><h4>'.$row['appName'].' '.$row['appVersion'].'</h4></a>';
+    echo '<small>'.$row['appShortDesc'].'</small></div>';
+    echo '</div>'; 
+    }    
     }
     }
 
 ?>
 </div>
-
+        </div>
+    </div>
+</div>
+</div>
