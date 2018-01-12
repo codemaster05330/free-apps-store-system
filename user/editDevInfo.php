@@ -6,7 +6,7 @@ if(isSignedIn())
     if($_SESSION['userLevel'] !=1)
     {
         logError("you don't have developer account");
-        header('location:./index.php');
+         header('location:./index.php');
        // echo "don't have developer account";
         exit(); 
     }
