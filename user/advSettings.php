@@ -5,7 +5,9 @@ include_once('../includes/login.functions.php');
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Advanced Settings</title></title>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../styles/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="../styles/bootstrap_custom.css" type="text/css"/>
     <link rel="stylesheet" href="../styles/mainStyle.css" type="text/css"/>
     <link rel="stylesheet" href="../styles/dashboard.css" type="text/css"/>
 </head>
@@ -17,14 +19,14 @@ include_once('./layout/userUpperBar.php');
 ?>
 </div>
 
-<div id="wrapper">
+<div id="wrapper" class="row">
 
-<div id="navigationBar">
+<div class="col col-md-2">
 <?php
 include_once('./layout/userMenu.php');
 ?>
 </div>
-<div id="content">
+<div class="col col-md-9 white-block">
 <?php
 if(isset($_GET['action']))
 {

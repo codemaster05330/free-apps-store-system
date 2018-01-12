@@ -7,12 +7,14 @@ if(isSignedIn())
     {
         logError("you don't have developer account");
         header('location:./index.php');
+       // echo "don't have developer account";
         exit(); 
     }
 }
 else
 {
-    header('location:./index.php');
+   header('location:./index.php');
+  //echo "unsigned";
     exit();
 }
 ?>

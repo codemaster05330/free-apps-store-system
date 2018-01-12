@@ -5,7 +5,9 @@ include_once('../includes/common.functions.php');
 <html>
 <head>
     <title>Developer Dashboard</title>
-    <link rel="stylesheet" href="../styles/mainStyle.css" type="text/css"/>
+   <link rel="stylesheet" href="./styles/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="./styles/bootstrap_custom.css" type="text/css"/>
+    <link rel="stylesheet" href="./styles/mainStyle.css" type="text/css"/>
     <link rel="stylesheet" href="../styles/dashboard.css" type="text/css"/>
 </head>
 
