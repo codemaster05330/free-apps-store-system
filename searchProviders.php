@@ -10,7 +10,7 @@ if(isset($_GET['search']) && isset($_GET['keyword']))
     
     $keywords=rtrim($_GET['keyword']);
     $keywords=ltrim($_GET['keyword']);
-    $wordsArr=split(" ",$keywords);
+    $wordsArr=explode(" ",$keywords);
     $filter="";
     while(list($key,$val)=each($wordsArr))
     {
@@ -39,16 +39,17 @@ if(isset($_GET['search']) && isset($_GET['keyword']))
     echo '<p id="sortPanel">
 sort by: <a href="?sort=appDownloads&search&keyword='.$keywords.'" id="hrefBtn">downloads</a>
 <a href="?sort=appRating&search&keyword='.$keywords.'" id="hrefBtn">ratings</a>
-<a href="?sort=approvalDate&search&keyword='.$keywords.'" id="hrefBtn">add date</a>
+<a href="?sort=approvalDate&search&keyword='.$keywords.'" class="btn btn-link">add date</a>
 </p>';
 
 while($row=$result->fetch_assoc())
 {
-    echo '<table id="smallApp"><tr><td rowspan="2" id="appLogo"><img id="mediumIcon" src="data:image;base64,'.$row['appIcon'].'"></td>';
-    echo '<td><a href="./app.php?appID='.$row['appID'].'"><h4>'.$row['appName'].' '.$row['appVersion'].'</h4></a>';
-    echo '<small>'.$row['appShortDesc'].'</small></td></tr>';
-    echo '<tr><td><small>Downloads : '.$row['appDownloads'].'</small></td></tr>';
-    echo '</table>'; 
+    echo '<div class="row" id="smallApp">';
+    echo '<div class="col col-md-2 app-img" ><img id="mediumIcon" src="data:image;base64,'.$row['appIcon'].'" ></div>';
+    echo '<div class="col col-md-10"><a href="./app.php?appID='.$row['appID'].'"><h4>'.$row['appName'].' '.$row['appVersion'].'</h4></a>';
+    echo '<small>'.$row['appShortDesc'].'</small>';
+    echo '<p><small >Downloads : <span class="badge">'.$row['appDownloads'].'</span></small></p></div>';
+    echo '</div>'; 
 }
 
 $pages=$totalRows/$APPSCOUNT;
