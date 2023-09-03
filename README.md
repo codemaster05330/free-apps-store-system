@@ -71,19 +71,3 @@ how to use it
 =============
 	1- import appstore.sql to your db , as it contain database setup 
 	2- copy content to your local server directory 
-
-	
-	
-	
-finally
-=======
-	
-I would also gladly welcome your questions and contributions.
-
-you are welcome to contact me at
-
-m.hussein1389@gmail.com
-
-Have fun!
-
-Mohamed Hussein.		
